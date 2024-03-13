@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-13 06:59+0000\n"
+"POT-Creation-Date: 2024-03-13 19:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,7 +133,7 @@ msgid "Representative type"
 msgstr "Представитель"
 
 #: site_app/templates/site_app/ag_grid.html:10
-#: site_app/templates/site_app/ag_grid.html:95
+#: site_app/templates/site_app/ag_grid.html:103
 #: site_app/templates/site_app/grid.html:8
 #: site_app/templates/site_app/grid.html:76
 msgid "Select columns"
@@ -154,12 +154,12 @@ msgstr "Показать все"
 msgid "Hide all"
 msgstr "Скрыть все"
 
-#: site_app/templates/site_app/ag_grid.html:92
+#: site_app/templates/site_app/ag_grid.html:100
 #: site_app/templates/site_app/grid.html:73
 msgid "Hide selector"
 msgstr "Закрыть выбор столбцов"
 
-#: site_app/templates/site_app/base.html:25
+#: site_app/templates/site_app/base.html:27
 msgid "HOME"
 msgstr "ГЛАВНАЯ"
 
@@ -185,7 +185,7 @@ msgstr "Пароль не может быть слишком простым ил
 #: site_app/templates/site_app/edit_profile.html:26
 #: site_app/templates/site_app/signup.html:26
 msgid "Your password can’t be entirely numeric"
-msgstr "Пароль не может состоять только из цыфр"
+msgstr "Пароль не может состоять только из цифр"
 
 #: site_app/templates/site_app/edit_profile.html:37
 msgid "Email"
