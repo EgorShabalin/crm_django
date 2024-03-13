@@ -1,0 +1,63 @@
+{% extends 'site_app/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+<!--
+<table>
+    <tr>
+        {% for name in field_names %}
+        <td>{{ name }}</td>
+        {% endfor %}
+    </tr>
+
+    {% for value in student_values %}
+    <tr>
+        
+        {% for v in value.values %}
+        <td>{{ v }}</td>        
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>-->
+
+
+{% if request.user.is_authenticated %}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+
+<div class="container">
+    <table id="myTable" class="display">
+        <thead>
+            <tr>
+                {% for name in field_names %}
+                    <th>{{ name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for value in student_values %}
+            <tr>        
+                {% for v in value.values %}
+                    <td>{{ v }}</td>        
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+</script>
+
+{% endif %}
+
+{% endblock %}

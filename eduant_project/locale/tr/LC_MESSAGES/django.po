@@ -1,0 +1,252 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-13 06:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: eduant_project/settings.py:31
+msgid "English"
+msgstr ""
+
+#: eduant_project/settings.py:32
+msgid "Turkish"
+msgstr ""
+
+#: eduant_project/settings.py:33
+msgid "Russian"
+msgstr ""
+
+#: site_app/models.py:9
+msgid "Course name"
+msgstr ""
+
+#: site_app/models.py:13 site_app/models.py:108 site_app/models.py:165
+msgid "Created time"
+msgstr ""
+
+#: site_app/models.py:17 site_app/models.py:112 site_app/models.py:169
+msgid "Updated time"
+msgstr ""
+
+#: site_app/models.py:27 site_app/models.py:132
+#: site_app/templates/site_app/edit_profile.html:52
+#: site_app/templates/site_app/profile.html:39
+msgid "First name"
+msgstr ""
+
+#: site_app/models.py:31 site_app/models.py:138
+#: site_app/templates/site_app/edit_profile.html:67
+#: site_app/templates/site_app/profile.html:54
+msgid "Last name"
+msgstr ""
+
+#: site_app/models.py:37 site_app/models.py:144
+msgid "Middle name"
+msgstr ""
+
+#: site_app/models.py:40
+msgid "Birth date"
+msgstr ""
+
+#: site_app/models.py:45
+msgid "Course"
+msgstr ""
+
+#: site_app/models.py:48
+msgid "Date of enrollment"
+msgstr ""
+
+#: site_app/models.py:51 site_app/models.py:160
+msgid "Contractor"
+msgstr ""
+
+#: site_app/models.py:55
+msgid "Country"
+msgstr ""
+
+#: site_app/models.py:59
+msgid "City"
+msgstr ""
+
+#: site_app/models.py:63
+msgid "Language"
+msgstr ""
+
+#: site_app/models.py:68
+msgid "Form of study"
+msgstr ""
+
+#: site_app/models.py:71
+msgid "Contract date"
+msgstr ""
+
+#: site_app/models.py:75
+msgid "Contract id"
+msgstr ""
+
+#: site_app/models.py:79
+msgid "Contract price"
+msgstr ""
+
+#: site_app/models.py:85
+msgid "Discount"
+msgstr ""
+
+#: site_app/models.py:91
+msgid "Promotion"
+msgstr ""
+
+#: site_app/models.py:97
+msgid "Where found out"
+msgstr ""
+
+#: site_app/models.py:103
+msgid "Agent name"
+msgstr ""
+
+#: site_app/models.py:126
+msgid "Student"
+msgstr ""
+
+#: site_app/models.py:150
+msgid "Personal ID"
+msgstr ""
+
+#: site_app/models.py:157
+msgid "Representative type"
+msgstr ""
+
+#: site_app/templates/site_app/ag_grid.html:10
+#: site_app/templates/site_app/ag_grid.html:95
+#: site_app/templates/site_app/grid.html:8
+#: site_app/templates/site_app/grid.html:76
+msgid "Select columns"
+msgstr ""
+
+#: site_app/templates/site_app/ag_grid.html:22
+#: site_app/templates/site_app/grid.html:20
+msgid "Apply"
+msgstr ""
+
+#: site_app/templates/site_app/ag_grid.html:23
+#: site_app/templates/site_app/grid.html:21
+msgid "Show all"
+msgstr ""
+
+#: site_app/templates/site_app/ag_grid.html:24
+#: site_app/templates/site_app/grid.html:22
+msgid "Hide all"
+msgstr ""
+
+#: site_app/templates/site_app/ag_grid.html:92
+#: site_app/templates/site_app/grid.html:73
+msgid "Hide selector"
+msgstr ""
+
+#: site_app/templates/site_app/base.html:25
+msgid "HOME"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:11
+msgid "EDIT PROFILE"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:23
+#: site_app/templates/site_app/signup.html:23
+msgid "Your password can’t be too similar to your other personal information"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:24
+#: site_app/templates/site_app/signup.html:24
+msgid "Your password must contain at least 8 characters"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:25
+#: site_app/templates/site_app/signup.html:25
+msgid "Your password can’t be a commonly used password"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:26
+#: site_app/templates/site_app/signup.html:26
+msgid "Your password can’t be entirely numeric"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:37
+msgid "Email"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:82
+#: site_app/templates/site_app/signup.html:52
+msgid "Phone"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:98
+#: site_app/templates/site_app/login.html:37
+#: site_app/templates/site_app/signup.html:67
+msgid "Password"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:113
+#: site_app/templates/site_app/signup.html:82
+msgid "Repeat Password"
+msgstr ""
+
+#: site_app/templates/site_app/edit_profile.html:141
+#: site_app/templates/site_app/signup.html:110
+msgid "SUBMIT"
+msgstr ""
+
+#: site_app/templates/site_app/index.html:11
+msgid "Welcome"
+msgstr ""
+
+#: site_app/templates/site_app/index.html:13
+msgid "PROFILE"
+msgstr ""
+
+#: site_app/templates/site_app/index.html:25
+#: site_app/templates/site_app/login.html:65
+msgid "LOG IN"
+msgstr ""
+
+#: site_app/templates/site_app/index.html:27
+msgid "SIGN UP"
+msgstr ""
+
+#: site_app/templates/site_app/login.html:11
+msgid "Log in"
+msgstr ""
+
+#: site_app/templates/site_app/profile.html:17
+msgid "MY PROFILE"
+msgstr ""
+
+#: site_app/templates/site_app/profile.html:69
+msgid "Phone number"
+msgstr ""
+
+#: site_app/templates/site_app/profile.html:85
+msgid "EDIT MY PROFILE"
+msgstr ""
+
+#: site_app/templates/site_app/profile.html:87
+msgid "LOG OUT"
+msgstr ""
+
+#: site_app/templates/site_app/signup.html:11
+msgid "Sign up"
+msgstr ""

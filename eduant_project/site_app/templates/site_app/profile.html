@@ -1,0 +1,99 @@
+{% extends 'site_app/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+{% if profile %}
+
+<div class='content'>
+
+    <div class='profile_details'>
+
+        <center>
+
+            <h2>{% trans 'MY PROFILE' %}</h2>
+
+            <table>
+
+                <tr>
+                    <td>
+
+                        <p>Email: </p>
+
+                    </td>
+
+                    <td>
+
+                        <p>{{ profile.email }}</p>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <p>{% trans 'First name' %}: </p>
+
+                    </td>
+
+                    <td>
+
+                        <p>{{ profile.first_name }}</p>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <p>{% trans 'Last name' %}: </p>
+
+                    </td>
+
+                    <td>
+
+                        <p>{{ profile.last_name }}</p>
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <p>{% trans 'Phone number' %}: </p>
+
+                    </td>
+
+                    <td>
+
+                        <p>{{ profile.phone }}</p>
+
+                    </td>
+                
+                </tr>
+
+                
+
+            </table>
+
+            <a class='button' href={% url 'site_app:edit_profile' %}>{% trans 'EDIT MY PROFILE' %}</a>
+
+            <a class='button' id="signup" href="{% url 'logout' %}">{% trans 'LOG OUT' %}</a>
+
+        </center>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endif %}
+
+{% endblock %}

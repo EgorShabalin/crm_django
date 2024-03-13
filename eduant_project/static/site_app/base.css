@@ -1,0 +1,74 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.button {
+    border: none;
+    margin: 10px;
+    padding: 5px 20px;
+    background-color: rgb(0, 82, 114);
+    color: lightgray;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: white;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header_image {
+    max-height: 30px;
+    margin: 10px;
+}
+
+.content {
+    margin: 20px;
+}
+
+.login_signup form {
+    margin: 0 20px 20px 20px;
+}
+
+.login_signup table {
+    margin: 0 20px 20px 20px;
+}
+
+.login_signup input,
+textarea {
+    border-style: solid;
+    border-color: rgb(0, 82, 114);
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.login_signup textarea {
+    width: 500px;
+    height: 300px;
+}
+
+.helptext ul {
+    list-style-type: none;
+}
+
+.errorlist {
+    color: darkred;
+}
+
+ul.errorlist {
+    list-style-type: none;
+}
+
+.checkbox_list {
+    flex-direction: row;
+}

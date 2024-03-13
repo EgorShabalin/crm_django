@@ -1,0 +1,45 @@
+{% extends 'site_app/base.html' %}
+{% load i18n %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+
+<!-- Container for Tabulator table -->
+<div id="tabulator-table"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tabulator/5.2.1/js/tabulator.min.js"></script>
+
+<script>
+
+    var tabledata = [
+        {% for value in student_values %}
+
+                {
+                
+                    {% for k, v in value.items %}
+
+                     {{ k }}: '{{ v }}', 
+                    
+                    {% endfor %}
+
+                    resizable: true,
+                
+                },
+
+                
+                
+            {% endfor %}
+    ]
+
+    var table = new Tabulator("#tabulator-table", {
+        
+        layout:"fitColumns",
+        resizableColumnFit:true,
+        data: tabledata,
+        autoColumns: true,
+    });
+
+</script>
+
+{% endif %}
+{% endblock %}

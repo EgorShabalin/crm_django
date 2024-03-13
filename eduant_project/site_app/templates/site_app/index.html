@@ -1,0 +1,33 @@
+{% extends 'site_app/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+<center>
+
+{% if request.user.is_authenticated %}
+
+    <h3>{% trans 'Welcome' %}, {% if user.name %}{{ user.name }}{% else %}{{ user.email }}{% endif %}!</h3>
+
+    <a class='button' href="{% url "site_app:profile" user.id %}">{% trans 'PROFILE' %}</a>
+    
+    <a class='button' href="{% url "site_app:table" %}">DataTable</a>
+
+    <a class='button' href="{% url "site_app:grid" %}">GRID</a>
+
+    <a class='button' href="{% url "site_app:tabulator" %}">Tabulator</a>
+
+    <a class='button' href="{% url "site_app:ag_grid" %}">Ag-Grid</a>
+
+{% else %}
+
+<a class='button' href="{% url "site_app:login" %}">{% trans 'LOG IN' %}</a>
+
+<a class='button' href="{% url "site_app:signup" %}">{% trans 'SIGN UP' %}</a>
+
+{% endif %}
+
+</center>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% load static i18n %}
+
+<!DOCTYPE HTML>
+
+<html>
+
+    <head>
+
+        <meta name="viewport" charset='UTF-8' content="width=device-width, initial-scale=1.0">
+
+        <title>Eduant CRM</title>
+
+        <link rel="shortcut icon" type="image/png" href="{% static 'site_app/favicon.ico' %}"/>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'site_app/base.css' %}">
+
+    </head>
+
+    <body>
+
+        <div class='header'>
+
+            <a class='button' href="{% url "site_app:index" %}">{% trans 'HOME' %}</a>
+
+            <a href="{% url "site_app:index" %}"><img class="header_image" src="{% static "site_app/logo_eduant_corp.svg" %}"></a>
+
+            <form action="{% url 'set_language' %}" method="post">
+
+                {% csrf_token %}
+
+                <input type="hidden" name="next" value="{{ request.path }}">
+
+                {% get_current_language as current_language %}
+
+                {% get_available_languages as available_languages %}
+
+                <button class='button' style="padding: 10px; min-width: fit-content;" type="submit" name="language" value="{% if current_language == 'tr' %}en{% elif current_language == 'en' %}ru{% elif current_language == 'ru' %}tr{% endif %}">
+
+                    {% if current_language == 'tr' %}
+
+                    🇹🇷
+
+                    {% elif current_language == 'en' %}
+
+                    🇺🇸
+
+                    {% elif current_language == 'ru' %}
+
+                    🇷🇺
+
+                    {% endif %}
+                    
+                </button>
+                
+            </form>
+                
+        </div>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </body>
+
+</html>

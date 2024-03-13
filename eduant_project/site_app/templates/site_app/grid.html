@@ -1,0 +1,105 @@
+{% extends 'site_app/base.html' %}
+{% load i18n %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+
+<!-- Toggle button to show/hide Select Columns section -->
+<button id="toggle-columns-btn" onclick="toggleColumnsSection()">{% trans 'Select columns' %}</button>
+
+<!-- Container for Select Columns section -->
+<div id="columns-section" style="display: none;">
+    <!-- Add checkboxes for column selection -->
+    <div>
+        {% for name in field_names %}
+            <div>
+                <input type="checkbox" id="{{ name }}" name="{{ name }}" value="{{ name }}" checked>
+                <label for="{{ name }}">{{ name }}</label>
+            </div>
+        {% endfor %}
+        <button onclick="applyColumnSelection()">{% trans 'Apply' %}</button>
+        <button onclick="toggleAllColumns(true)">{% trans 'Show all' %}</button>
+        <button onclick="toggleAllColumns(false)">{% trans 'Hide all' %}</button>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.production.min.js"></script>
+
+<div id="grid"></div>
+
+<script>
+    // Initialize Grid.js table with all columns visible
+    const grid = new gridjs.Grid({
+        columns: [
+            {% for name in field_names %}
+                { name: "{{ name }}" },
+            {% endfor %}
+        ],
+        data: [
+            {% for value in student_values %}
+                [
+                    {% for v in value.values %}
+                        "{{ v }}",
+                    {% endfor %}
+                ],
+            {% endfor %}
+        ],
+        resizable: true,
+        search: true,
+        pagination: true,
+        sort: true,
+        style: {
+            table: {
+                border: 'none'
+            },
+
+            th: {                
+                'text-align': 'center'
+            },
+            td: {
+                'text-align': 'center',
+                'height': '10px',
+            }
+        }
+    }).render(document.getElementById('grid'));
+
+    // Function to toggle visibility of Select Columns section
+    function toggleColumnsSection() {
+        const columnsSection = document.getElementById('columns-section');
+        const toggleButton = document.getElementById('toggle-columns-btn');
+        if (columnsSection.style.display === 'none') {
+            columnsSection.style.display = 'block';
+            toggleButton.textContent = '{% trans 'Hide selector' %}';
+        } else {
+            columnsSection.style.display = 'none';
+            toggleButton.textContent = '{% trans 'Select columns' %}';
+        }
+    }
+
+    // Function to apply column selection based on checkbox state
+    function applyColumnSelection() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const selectedColumns = Array.from(checkboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value);
+        
+        grid.updateConfig({
+            columns: grid.config.columns.map(column => ({
+                ...column,
+                hidden: !selectedColumns.includes(column.name)
+            }))
+        }).forceRender();
+    }
+
+    // Function to toggle state of all checkboxes
+    function toggleAllColumns(checked) {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = checked;
+        });
+    }
+</script>
+
+{% endif %}
+{% endblock %}
