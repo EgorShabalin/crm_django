@@ -91,6 +91,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "eduant_project.wsgi.application"
 
+ASGI_APPLICATION = "eduant_project.wsgi.application"
+
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

@@ -6,5 +6,5 @@ RUN pip3 install -r requirements.txt
 
 EXPOSE 8000
 
-ENTRYPOINT ["python3", "my_project/manage.py"]
+ENTRYPOINT ["python3", "eduant_project/manage.py"]
 CMD ["runserver", "0.0.0.0:8000"]
