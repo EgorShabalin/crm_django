@@ -27,14 +27,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
 
-<div id="myGrid" class="ag-theme-quartz" style="height: 500px"></div>
+<div id="myGrid" class="ag-theme-quartz" style="height: 800px;"></div>
 
 
 <script>
 
     let gridApi;
 
-    let columnDefs = [
+    const columnDefs = [
         {% for name in field_names %}
 
             { 
@@ -44,41 +44,41 @@
                     buttons: ['apply', 'reset'],
                     closeOnApply: true,
                 },
-                hide: false,
-        },
+                hide: false,                
+            },
 
         {% endfor %}
     ];
+
+    const rowData = [
+        {% for value in student_values %}
+
+            {
+                
+                {% for k, v in value.items %}
+
+                '{{ k }}': '{{ v }}', 
+                    
+                {% endfor %}
+
+                resizable: true,
+                
+            },
+    
+        {% endfor %}
+    ]
 
     const gridOptions = {
         pagination: true,
         paginationPageSize: 100,
         paginationPageSizeSelector: [100, 200, 500],
+        rowSelection: 'multiple',        
+        onRowSelected: showSelected,
         autoSizeStrategy: {
             type: 'fitCellContents'
         },
-
         columnDefs,
-
-        rowData: [
-            {% for value in student_values %}
-
-                {
-                    
-                    {% for k, v in value.items %}
-
-                    '{{ k }}': '{{ v }}', 
-                        
-                    {% endfor %}
-
-                    resizable: true,
-                    
-                },
-    
-            {% endfor %}
-        ],
-
-
+        rowData,
     };
     
 
@@ -86,7 +86,11 @@
     gridApi = agGrid.createGrid(myGridElement, gridOptions);
 
     
-
+    function showSelected(event) {
+        var data_values = Object.values(event.data);
+        var id = data_values[0];
+        location.replace(`/ru/student/${id}/`);
+    }
 
 
 

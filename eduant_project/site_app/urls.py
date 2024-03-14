@@ -23,5 +23,6 @@ urlpatterns = [
     path("grid/", grid, name="grid"),
     path("tabulator/", tabulator, name="tabulator"),
     path("ag_grid/", ag_grid, name="ag_grid"),
+    path("student/<int:pk>/", student, name="student"),
     path("set-language/", set_language, name="set_language"),
 ]

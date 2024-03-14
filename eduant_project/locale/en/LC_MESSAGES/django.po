@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-13 19:23+0000\n"
+"POT-Creation-Date: 2024-03-14 15:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,126 +34,159 @@ msgstr ""
 msgid "Course name"
 msgstr ""
 
-#: site_app/models.py:13 site_app/models.py:108 site_app/models.py:165
+#: site_app/models.py:15
+msgid "Course price"
+msgstr ""
+
+#: site_app/models.py:20 site_app/models.py:137 site_app/models.py:216
 msgid "Created time"
 msgstr ""
 
-#: site_app/models.py:17 site_app/models.py:112 site_app/models.py:169
+#: site_app/models.py:24 site_app/models.py:141 site_app/models.py:220
 msgid "Updated time"
 msgstr ""
 
-#: site_app/models.py:27 site_app/models.py:132
+#: site_app/models.py:34 site_app/models.py:165
 #: site_app/templates/site_app/edit_profile.html:52
 #: site_app/templates/site_app/profile.html:39
 msgid "First name"
 msgstr ""
 
-#: site_app/models.py:31 site_app/models.py:138
+#: site_app/models.py:38 site_app/models.py:171
 #: site_app/templates/site_app/edit_profile.html:67
 #: site_app/templates/site_app/profile.html:54
 msgid "Last name"
 msgstr ""
 
-#: site_app/models.py:37 site_app/models.py:144
+#: site_app/models.py:44 site_app/models.py:177
 msgid "Middle name"
 msgstr ""
 
-#: site_app/models.py:40
+#: site_app/models.py:47
 msgid "Birth date"
 msgstr ""
 
-#: site_app/models.py:45
+#: site_app/models.py:52
 msgid "Course"
 msgstr ""
 
-#: site_app/models.py:48
+#: site_app/models.py:55
 msgid "Date of enrollment"
 msgstr ""
 
-#: site_app/models.py:51 site_app/models.py:160
+#: site_app/models.py:58 site_app/models.py:211
 msgid "Contractor"
 msgstr ""
 
-#: site_app/models.py:55
+#: site_app/models.py:62
 msgid "Country"
 msgstr ""
 
-#: site_app/models.py:59
+#: site_app/models.py:66
 msgid "City"
 msgstr ""
 
-#: site_app/models.py:63
+#: site_app/models.py:70
 msgid "Language"
 msgstr ""
 
-#: site_app/models.py:68
+#: site_app/models.py:75
 msgid "Form of study"
 msgstr ""
 
-#: site_app/models.py:71
+#: site_app/models.py:78
 msgid "Contract date"
 msgstr ""
 
-#: site_app/models.py:75
+#: site_app/models.py:82
 msgid "Contract id"
 msgstr ""
 
-#: site_app/models.py:79
+#: site_app/models.py:86
 msgid "Contract price"
 msgstr ""
 
-#: site_app/models.py:85
+#: site_app/models.py:92
 msgid "Discount"
 msgstr ""
 
-#: site_app/models.py:91
+#: site_app/models.py:98
 msgid "Promotion"
 msgstr ""
 
-#: site_app/models.py:97
+#: site_app/models.py:104
 msgid "Where found out"
 msgstr ""
 
-#: site_app/models.py:103
+#: site_app/models.py:110
 msgid "Agent name"
 msgstr ""
 
-#: site_app/models.py:126
+#: site_app/models.py:116 site_app/models.py:196
+#: site_app/templates/site_app/edit_profile.html:82
+#: site_app/templates/site_app/signup.html:52
+msgid "Phone"
+msgstr ""
+
+#: site_app/models.py:122 site_app/models.py:202
+#: site_app/templates/site_app/edit_profile.html:37
+msgid "Email"
+msgstr ""
+
+#: site_app/models.py:128 site_app/models.py:208
+msgid "Other contact"
+msgstr ""
+
+#: site_app/models.py:132
+msgid "Debtor"
+msgstr ""
+
+#: site_app/models.py:145
+msgid "Active"
+msgstr ""
+
+#: site_app/models.py:159
 msgid "Student"
 msgstr ""
 
-#: site_app/models.py:150
+#: site_app/models.py:183
 msgid "Personal ID"
 msgstr ""
 
-#: site_app/models.py:157
+#: site_app/models.py:190
 msgid "Representative type"
 msgstr ""
 
 #: site_app/templates/site_app/ag_grid.html:10
-#: site_app/templates/site_app/ag_grid.html:103
+#: site_app/templates/site_app/ag_grid.html:107
 #: site_app/templates/site_app/grid.html:8
 #: site_app/templates/site_app/grid.html:76
+#: site_app/templates/site_app/student.html:19
+#: site_app/templates/site_app/student.html:116
 msgid "Select columns"
 msgstr ""
 
 #: site_app/templates/site_app/ag_grid.html:22
 #: site_app/templates/site_app/grid.html:20
+#: site_app/templates/site_app/student.html:31
 msgid "Apply"
 msgstr ""
 
 #: site_app/templates/site_app/ag_grid.html:23
 #: site_app/templates/site_app/grid.html:21
+#: site_app/templates/site_app/student.html:32
 msgid "Show all"
 msgstr ""
 
 #: site_app/templates/site_app/ag_grid.html:24
 #: site_app/templates/site_app/grid.html:22
+#: site_app/templates/site_app/student.html:33
 msgid "Hide all"
 msgstr ""
 
-#: site_app/templates/site_app/ag_grid.html:100
+#: site_app/templates/site_app/ag_grid.html:104
 #: site_app/templates/site_app/grid.html:73
+#: site_app/templates/site_app/student.html:113
 msgid "Hide selector"
 msgstr ""
 
@@ -183,15 +216,6 @@ msgstr ""
 #: site_app/templates/site_app/edit_profile.html:26
 #: site_app/templates/site_app/signup.html:26
 msgid "Your password can’t be entirely numeric"
-msgstr ""
-
-#: site_app/templates/site_app/edit_profile.html:37
-msgid "Email"
-msgstr ""
-
-#: site_app/templates/site_app/edit_profile.html:82
-#: site_app/templates/site_app/signup.html:52
-msgid "Phone"
 msgstr ""
 
 #: site_app/templates/site_app/edit_profile.html:98
@@ -249,4 +273,8 @@ msgstr ""
 
 #: site_app/templates/site_app/signup.html:11
 msgid "Sign up"
+msgstr ""
+
+#: site_app/templates/site_app/student.html:10
+msgid "BACK"
 msgstr ""

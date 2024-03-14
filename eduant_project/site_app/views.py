@@ -145,3 +145,30 @@ def ag_grid(request):
             "student_values": student_values,
         },
     )
+
+
+@login_required
+def student(request, pk):
+    current_student = Student.objects.get(id=pk)
+    representatives = Representative.objects.filter(student=current_student)
+    field_names = []
+    for field in Representative._meta.fields:
+        field_names.append(field.verbose_name)
+    representative_values = []
+    for representative in representatives:
+        values = [
+            (field.verbose_name, getattr(representative, field.name))
+            for field in Representative._meta.fields
+        ]
+        representative_values.append(dict(values))
+
+    return render(
+        request,
+        "site_app/student.html",
+        {
+            "current_student": current_student,
+            "representatives": representatives,
+            "field_names": field_names,
+            "representative_values": representative_values,
+        },
+    )

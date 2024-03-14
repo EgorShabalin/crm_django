@@ -37,7 +37,13 @@ LOCALE_PATHS = [
     BASE_DIR / "locale/",
 ]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "0.0.0.0",
+    "127.0.0.1",
+    "eduant-crm.onrender.com",
+]
+
+CSRF_TRUSTED_ORIGINS = ["https://eduant-crm.onrender.com"]
 
 
 # Application definition

@@ -8,6 +8,13 @@ class Course(models.Model):
         max_length=255,
         verbose_name=_("Course name"),
     )
+    price = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Course price"),
+    )
+
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name=_("Created time"),
@@ -102,6 +109,28 @@ class Student(models.Model):
         null=True,
         verbose_name=_("Agent name"),
     )
+    phone = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Phone"),
+    )
+    email = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Email"),
+    )
+    other_contact = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Other contact"),
+    )
+    debtor = models.BooleanField(
+        default=False,
+        verbose_name=_("Debtor"),
+    )
 
     created_at = models.DateTimeField(
         auto_now_add=True,
@@ -110,6 +139,10 @@ class Student(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name=_("Updated time"),
+    )
+    active = models.BooleanField(
+        default=True,
+        verbose_name=_("Active"),
     )
 
     def __str__(self):
@@ -155,6 +188,24 @@ class Representative(models.Model):
         blank=True,
         null=True,
         verbose_name=_("Representative type"),
+    )
+    phone = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Phone"),
+    )
+    email = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Email"),
+    )
+    other_contact = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Other contact"),
     )
     payer = models.BooleanField(
         verbose_name=_("Contractor"),

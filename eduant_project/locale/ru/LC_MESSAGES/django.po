@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-13 19:23+0000\n"
+"POT-Creation-Date: 2024-03-14 15:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: eduant_project/settings.py:31
 msgid "English"
-msgstr "Английский"
+msgstr ""
 
 #: eduant_project/settings.py:32
 msgid "Turkish"
@@ -36,128 +36,161 @@ msgstr "Русский"
 msgid "Course name"
 msgstr "Название курса"
 
-#: site_app/models.py:13 site_app/models.py:108 site_app/models.py:165
+#: site_app/models.py:15
+msgid "Course price"
+msgstr "Цена курса"
+
+#: site_app/models.py:20 site_app/models.py:137 site_app/models.py:216
 msgid "Created time"
 msgstr "Время создания"
 
-#: site_app/models.py:17 site_app/models.py:112 site_app/models.py:169
+#: site_app/models.py:24 site_app/models.py:141 site_app/models.py:220
 msgid "Updated time"
 msgstr "Время обновления"
 
-#: site_app/models.py:27 site_app/models.py:132
+#: site_app/models.py:34 site_app/models.py:165
 #: site_app/templates/site_app/edit_profile.html:52
 #: site_app/templates/site_app/profile.html:39
 msgid "First name"
 msgstr "Имя"
 
-#: site_app/models.py:31 site_app/models.py:138
+#: site_app/models.py:38 site_app/models.py:171
 #: site_app/templates/site_app/edit_profile.html:67
 #: site_app/templates/site_app/profile.html:54
 msgid "Last name"
 msgstr "Фамилия"
 
-#: site_app/models.py:37 site_app/models.py:144
+#: site_app/models.py:44 site_app/models.py:177
 msgid "Middle name"
 msgstr "Отчество"
 
-#: site_app/models.py:40
+#: site_app/models.py:47
 msgid "Birth date"
 msgstr "Дата рождения"
 
-#: site_app/models.py:45
+#: site_app/models.py:52
 msgid "Course"
 msgstr "Курс"
 
-#: site_app/models.py:48
+#: site_app/models.py:55
 msgid "Date of enrollment"
 msgstr "Дата зачисления"
 
-#: site_app/models.py:51 site_app/models.py:160
+#: site_app/models.py:58 site_app/models.py:211
 msgid "Contractor"
 msgstr "Контрактор"
 
-#: site_app/models.py:55
+#: site_app/models.py:62
 msgid "Country"
 msgstr "Страна"
 
-#: site_app/models.py:59
+#: site_app/models.py:66
 msgid "City"
 msgstr "Город"
 
-#: site_app/models.py:63
+#: site_app/models.py:70
 msgid "Language"
 msgstr "Язык"
 
-#: site_app/models.py:68
+#: site_app/models.py:75
 msgid "Form of study"
 msgstr "Форма обучения"
 
-#: site_app/models.py:71
+#: site_app/models.py:78
 msgid "Contract date"
-msgstr "Дата контракта"
+msgstr "Дата договора"
 
-#: site_app/models.py:75
+#: site_app/models.py:82
 msgid "Contract id"
-msgstr "Номер контракта"
+msgstr "Номер договора"
 
-#: site_app/models.py:79
+#: site_app/models.py:86
 msgid "Contract price"
-msgstr "Цена контракта"
+msgstr "Цена по договору"
 
-#: site_app/models.py:85
+#: site_app/models.py:92
 msgid "Discount"
 msgstr "Скидка"
 
-#: site_app/models.py:91
+#: site_app/models.py:98
 msgid "Promotion"
 msgstr "Акция"
 
-#: site_app/models.py:97
+#: site_app/models.py:104
 msgid "Where found out"
-msgstr "Откуда узнал"
+msgstr "Откуда узнали"
 
-#: site_app/models.py:103
+#: site_app/models.py:110
 msgid "Agent name"
 msgstr "Агент"
 
-#: site_app/models.py:126
+#: site_app/models.py:116 site_app/models.py:196
+#: site_app/templates/site_app/edit_profile.html:82
+#: site_app/templates/site_app/signup.html:52
+msgid "Phone"
+msgstr "Телефон"
+
+#: site_app/models.py:122 site_app/models.py:202
+#: site_app/templates/site_app/edit_profile.html:37
+msgid "Email"
+msgstr "Электронная почта"
+
+#: site_app/models.py:128 site_app/models.py:208
+msgid "Other contact"
+msgstr "Другой контакт"
+
+#: site_app/models.py:132
+msgid "Debtor"
+msgstr "Должник"
+
+#: site_app/models.py:145
+msgid "Active"
+msgstr "Активен"
+
+#: site_app/models.py:159
 msgid "Student"
 msgstr "Студент"
 
-#: site_app/models.py:150
+#: site_app/models.py:183
 msgid "Personal ID"
 msgstr "Номер паспорта"
 
-#: site_app/models.py:157
+#: site_app/models.py:190
 msgid "Representative type"
-msgstr "Представитель"
+msgstr "Тип представителя"
 
 #: site_app/templates/site_app/ag_grid.html:10
-#: site_app/templates/site_app/ag_grid.html:103
+#: site_app/templates/site_app/ag_grid.html:107
 #: site_app/templates/site_app/grid.html:8
 #: site_app/templates/site_app/grid.html:76
+#: site_app/templates/site_app/student.html:19
+#: site_app/templates/site_app/student.html:116
 msgid "Select columns"
 msgstr "Выбор столбцов"
 
 #: site_app/templates/site_app/ag_grid.html:22
 #: site_app/templates/site_app/grid.html:20
+#: site_app/templates/site_app/student.html:31
 msgid "Apply"
 msgstr "Применить"
 
 #: site_app/templates/site_app/ag_grid.html:23
 #: site_app/templates/site_app/grid.html:21
+#: site_app/templates/site_app/student.html:32
 msgid "Show all"
 msgstr "Показать все"
 
 #: site_app/templates/site_app/ag_grid.html:24
 #: site_app/templates/site_app/grid.html:22
+#: site_app/templates/site_app/student.html:33
 msgid "Hide all"
 msgstr "Скрыть все"
 
-#: site_app/templates/site_app/ag_grid.html:100
+#: site_app/templates/site_app/ag_grid.html:104
 #: site_app/templates/site_app/grid.html:73
+#: site_app/templates/site_app/student.html:113
 msgid "Hide selector"
-msgstr "Закрыть выбор столбцов"
+msgstr "Скрыть выбор столбцов"
 
 #: site_app/templates/site_app/base.html:27
 msgid "HOME"
@@ -175,26 +208,17 @@ msgstr "Пароль не может быть похож на остальную
 #: site_app/templates/site_app/edit_profile.html:24
 #: site_app/templates/site_app/signup.html:24
 msgid "Your password must contain at least 8 characters"
-msgstr "Пароль должен содержать минимум 8 знаков"
+msgstr "Пароль должен состоять минимум из 8 знаков"
 
 #: site_app/templates/site_app/edit_profile.html:25
 #: site_app/templates/site_app/signup.html:25
 msgid "Your password can’t be a commonly used password"
-msgstr "Пароль не может быть слишком простым или часто используемым"
+msgstr "Пароль не может быть часто используемым"
 
 #: site_app/templates/site_app/edit_profile.html:26
 #: site_app/templates/site_app/signup.html:26
 msgid "Your password can’t be entirely numeric"
-msgstr "Пароль не может состоять только из цифр"
-
-#: site_app/templates/site_app/edit_profile.html:37
-msgid "Email"
-msgstr "Электронная почта"
-
-#: site_app/templates/site_app/edit_profile.html:82
-#: site_app/templates/site_app/signup.html:52
-msgid "Phone"
-msgstr "Телефон"
+msgstr "Пароль не может содержать только цифры"
 
 #: site_app/templates/site_app/edit_profile.html:98
 #: site_app/templates/site_app/login.html:37
@@ -223,7 +247,7 @@ msgstr "ПРОФИЛЬ"
 #: site_app/templates/site_app/index.html:25
 #: site_app/templates/site_app/login.html:65
 msgid "LOG IN"
-msgstr "ВОЙТИ"
+msgstr "ВХОД"
 
 #: site_app/templates/site_app/index.html:27
 msgid "SIGN UP"
@@ -231,7 +255,7 @@ msgstr "РЕГИСТРАЦИЯ"
 
 #: site_app/templates/site_app/login.html:11
 msgid "Log in"
-msgstr "Войти"
+msgstr "Вход"
 
 #: site_app/templates/site_app/profile.html:17
 msgid "MY PROFILE"
@@ -252,3 +276,7 @@ msgstr "ВЫХОД"
 #: site_app/templates/site_app/signup.html:11
 msgid "Sign up"
 msgstr "Регистрация"
+
+#: site_app/templates/site_app/student.html:10
+msgid "BACK"
+msgstr "НАЗАД"
