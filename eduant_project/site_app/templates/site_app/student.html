@@ -12,7 +12,7 @@
 <br>
 <br>
 <div class='content'>
-    <h2>{{ current_student.first_name }} {{ current_student.last_name }} {{ current_student.middle_name }}</h2>
+    <h2>{% trans 'Student' %}: {{ current_student.first_name }} {{ current_student.last_name }} {{ current_student.middle_name }}</h2>
 </div>
 
 <!-- Toggle button to show/hide Select Columns section -->
@@ -22,7 +22,7 @@
 <div id="columns_selection" style="display: none;">
     <!-- Add checkboxes for column selection -->
     <div class='checkbox_list'>
-        {% for name in field_names %}
+        {% for name in column_names %}
             <div>
                 <input type="checkbox" id="{{ name }}" name="{{ name }}" value="{{ name }}" checked>
                 <label for="{{ name }}">{{ name }}</label>
@@ -44,7 +44,7 @@
     let gridApi;
 
     const columnDefs = [
-        {% for name in field_names %}
+        {% for name in column_names %}
 
             { 
                 field: "{{ name }}", 
@@ -60,11 +60,11 @@
     ];
 
     const rowData = [
-        {% for value in representative_values %}
+        {% for element in representative_dicts_list %}
 
             {
                 
-                {% for k, v in value.items %}
+                {% for k, v in element.items %}
 
                 '{{ k }}': '{{ v }}', 
                     

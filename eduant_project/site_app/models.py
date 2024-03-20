@@ -46,6 +46,23 @@ class Student(models.Model):
     birth_date = models.DateField(
         verbose_name=_("Birth date"),
     )
+    personal_id = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Personal ID"),
+    )
+    residence_permit_id = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Residence Permit ID"),
+    )
+    residence_permit_end_date = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name=_("Residence Permit End Date"),
+    )
     course = models.ForeignKey(
         Course,
         on_delete=models.PROTECT,
@@ -64,6 +81,12 @@ class Student(models.Model):
     city = models.CharField(
         max_length=255,
         verbose_name=_("City"),
+    )
+    address = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Address"),
     )
     language = models.CharField(
         max_length=255,
@@ -131,6 +154,10 @@ class Student(models.Model):
         default=False,
         verbose_name=_("Debtor"),
     )
+    active = models.BooleanField(
+        default=True,
+        verbose_name=_("Active"),
+    )
 
     created_at = models.DateTimeField(
         auto_now_add=True,
@@ -139,10 +166,6 @@ class Student(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
         verbose_name=_("Updated time"),
-    )
-    active = models.BooleanField(
-        default=True,
-        verbose_name=_("Active"),
     )
 
     def __str__(self):
@@ -181,6 +204,24 @@ class Representative(models.Model):
         blank=True,
         null=True,
         verbose_name=_("Personal ID"),
+    )
+    country = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Country"),
+    )
+    city = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("City"),
+    )
+    address = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name=_("Address"),
     )
     representative_type = models.CharField(
         choices=REPRESENTATIVES,

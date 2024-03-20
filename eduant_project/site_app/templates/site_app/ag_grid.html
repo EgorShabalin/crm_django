@@ -13,7 +13,7 @@
 <div id="columns_selection" style="display: none;">
     <!-- Add checkboxes for column selection -->
     <div class='checkbox_list'>
-        {% for name in field_names %}
+        {% for name in column_names %}
             <div>
                 <input type="checkbox" id="{{ name }}" name="{{ name }}" value="{{ name }}" checked>
                 <label for="{{ name }}">{{ name }}</label>
@@ -35,7 +35,7 @@
     let gridApi;
 
     const columnDefs = [
-        {% for name in field_names %}
+        {% for name in column_names %}
 
             { 
                 field: "{{ name }}", 
@@ -51,11 +51,11 @@
     ];
 
     const rowData = [
-        {% for value in student_values %}
+        {% for element in student_dict_list %}
 
             {
                 
-                {% for k, v in value.items %}
+                {% for k, v in element.items %}
 
                 '{{ k }}': '{{ v }}', 
                     
@@ -91,9 +91,6 @@
         var id = data_values[0];
         location.replace(`/ru/student/${id}/`);
     }
-
-
-
 
     // Function to toggle visibility of Select Columns section
     function toggleColumnsSelection() {
@@ -133,11 +130,6 @@
         
     }
 
-
-
-
-
-
     // Function to toggle state of all checkboxes
     function toggleAllColumns(checked) {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -147,12 +139,6 @@
     }
 
 </script>
-
-
-
-
-
-
 
 
 {% endif %}

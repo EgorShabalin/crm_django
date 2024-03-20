@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-14 15:13+0000\n"
+"POT-Creation-Date: 2024-03-19 14:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,27 +38,27 @@ msgstr ""
 msgid "Course price"
 msgstr ""
 
-#: site_app/models.py:20 site_app/models.py:137 site_app/models.py:216
+#: site_app/models.py:20 site_app/models.py:164 site_app/models.py:239
 msgid "Created time"
 msgstr ""
 
-#: site_app/models.py:24 site_app/models.py:141 site_app/models.py:220
+#: site_app/models.py:24 site_app/models.py:168 site_app/models.py:243
 msgid "Updated time"
 msgstr ""
 
-#: site_app/models.py:34 site_app/models.py:165
+#: site_app/models.py:34 site_app/models.py:188
 #: site_app/templates/site_app/edit_profile.html:52
 #: site_app/templates/site_app/profile.html:39
 msgid "First name"
 msgstr ""
 
-#: site_app/models.py:38 site_app/models.py:171
+#: site_app/models.py:38 site_app/models.py:194
 #: site_app/templates/site_app/edit_profile.html:67
 #: site_app/templates/site_app/profile.html:54
 msgid "Last name"
 msgstr ""
 
-#: site_app/models.py:44 site_app/models.py:177
+#: site_app/models.py:44 site_app/models.py:200
 msgid "Middle name"
 msgstr ""
 
@@ -66,99 +66,111 @@ msgstr ""
 msgid "Birth date"
 msgstr ""
 
-#: site_app/models.py:52
+#: site_app/models.py:53 site_app/models.py:206
+msgid "Personal ID"
+msgstr ""
+
+#: site_app/models.py:59
+msgid "Residence Permit ID"
+msgstr ""
+
+#: site_app/models.py:64
+msgid "Residence Permit End Date"
+msgstr ""
+
+#: site_app/models.py:69
 msgid "Course"
 msgstr ""
 
-#: site_app/models.py:55
+#: site_app/models.py:72
 msgid "Date of enrollment"
 msgstr ""
 
-#: site_app/models.py:58 site_app/models.py:211
+#: site_app/models.py:75 site_app/models.py:234
 msgid "Contractor"
 msgstr ""
 
-#: site_app/models.py:62
+#: site_app/models.py:79
 msgid "Country"
 msgstr ""
 
-#: site_app/models.py:66
+#: site_app/models.py:83
 msgid "City"
 msgstr ""
 
-#: site_app/models.py:70
+#: site_app/models.py:89
+msgid "Address"
+msgstr ""
+
+#: site_app/models.py:93
 msgid "Language"
 msgstr ""
 
-#: site_app/models.py:75
+#: site_app/models.py:98
 msgid "Form of study"
 msgstr ""
 
-#: site_app/models.py:78
+#: site_app/models.py:101
 msgid "Contract date"
 msgstr ""
 
-#: site_app/models.py:82
+#: site_app/models.py:105
 msgid "Contract id"
 msgstr ""
 
-#: site_app/models.py:86
+#: site_app/models.py:109
 msgid "Contract price"
 msgstr ""
 
-#: site_app/models.py:92
+#: site_app/models.py:115
 msgid "Discount"
 msgstr ""
 
-#: site_app/models.py:98
+#: site_app/models.py:121
 msgid "Promotion"
 msgstr ""
 
-#: site_app/models.py:104
+#: site_app/models.py:127
 msgid "Where found out"
 msgstr ""
 
-#: site_app/models.py:110
+#: site_app/models.py:133
 msgid "Agent name"
 msgstr ""
 
-#: site_app/models.py:116 site_app/models.py:196
+#: site_app/models.py:139 site_app/models.py:219
 #: site_app/templates/site_app/edit_profile.html:82
 #: site_app/templates/site_app/signup.html:52
 msgid "Phone"
 msgstr ""
 
-#: site_app/models.py:122 site_app/models.py:202
+#: site_app/models.py:145 site_app/models.py:225
 #: site_app/templates/site_app/edit_profile.html:37
 msgid "Email"
 msgstr ""
 
-#: site_app/models.py:128 site_app/models.py:208
+#: site_app/models.py:151 site_app/models.py:231
 msgid "Other contact"
 msgstr ""
 
-#: site_app/models.py:132
+#: site_app/models.py:155
 msgid "Debtor"
 msgstr ""
 
-#: site_app/models.py:145
+#: site_app/models.py:159
 msgid "Active"
 msgstr ""
 
-#: site_app/models.py:159
+#: site_app/models.py:182 site_app/templates/site_app/student.html:15
 msgid "Student"
 msgstr ""
 
-#: site_app/models.py:183
-msgid "Personal ID"
-msgstr ""
-
-#: site_app/models.py:190
+#: site_app/models.py:213
 msgid "Representative type"
 msgstr ""
 
 #: site_app/templates/site_app/ag_grid.html:10
-#: site_app/templates/site_app/ag_grid.html:107
+#: site_app/templates/site_app/ag_grid.html:104
 #: site_app/templates/site_app/grid.html:8
 #: site_app/templates/site_app/grid.html:76
 #: site_app/templates/site_app/student.html:19
@@ -184,7 +196,7 @@ msgstr ""
 msgid "Hide all"
 msgstr ""
 
-#: site_app/templates/site_app/ag_grid.html:104
+#: site_app/templates/site_app/ag_grid.html:101
 #: site_app/templates/site_app/grid.html:73
 #: site_app/templates/site_app/student.html:113
 msgid "Hide selector"

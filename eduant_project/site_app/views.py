@@ -126,23 +126,24 @@ def tabulator(request):
 @login_required
 def ag_grid(request):
     students = Student.objects.all()
-    field_names = []
+    column_names = []
     for field in Student._meta.fields:
-        field_names.append(field.verbose_name)
-    student_values = []
+        column_names.append(field.verbose_name)
+    student_dict_list = []
     for student in students:
-        values = [
+        key_value_pairs = [
             (field.verbose_name, getattr(student, field.name))
             for field in Student._meta.fields
         ]
-        student_values.append(dict(values))
+        student_dict_list.append(dict(key_value_pairs))
+
     return render(
         request,
         "site_app/ag_grid.html",
         {
             "students": students,
-            "field_names": field_names,
-            "student_values": student_values,
+            "column_names": column_names,
+            "student_dict_list": student_dict_list,
         },
     )
 
@@ -151,16 +152,16 @@ def ag_grid(request):
 def student(request, pk):
     current_student = Student.objects.get(id=pk)
     representatives = Representative.objects.filter(student=current_student)
-    field_names = []
+    column_names = []
     for field in Representative._meta.fields:
-        field_names.append(field.verbose_name)
-    representative_values = []
+        column_names.append(field.verbose_name)
+    representative_dicts_list = []
     for representative in representatives:
-        values = [
+        key_value_pairs = [
             (field.verbose_name, getattr(representative, field.name))
             for field in Representative._meta.fields
         ]
-        representative_values.append(dict(values))
+        representative_dicts_list.append(dict(key_value_pairs))
 
     return render(
         request,
@@ -168,7 +169,7 @@ def student(request, pk):
         {
             "current_student": current_student,
             "representatives": representatives,
-            "field_names": field_names,
-            "representative_values": representative_values,
+            "column_names": column_names,
+            "representative_dicts_list": representative_dicts_list,
         },
     )
