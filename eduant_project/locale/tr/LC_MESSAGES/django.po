@@ -64,7 +64,7 @@ msgstr "İkinci ad"
 
 #: site_app/models.py:47
 msgid "Birth date"
-msgstr "Doğum günü"
+msgstr "Doğum Tarihi"
 
 #: site_app/models.py:53 site_app/models.py:206
 msgid "Personal ID"
@@ -84,7 +84,7 @@ msgstr "Kurs"
 
 #: site_app/models.py:72
 msgid "Date of enrollment"
-msgstr "Kayıt tarihi"
+msgstr "Kayıt Tarihi"
 
 #: site_app/models.py:75 site_app/models.py:234
 msgid "Contractor"
@@ -112,7 +112,7 @@ msgstr ""
 
 #: site_app/models.py:101
 msgid "Contract date"
-msgstr "Çalışma şekli"
+msgstr "Sözleşme Tarihi"
 
 #: site_app/models.py:105
 msgid "Contract id"

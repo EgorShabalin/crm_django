@@ -38,8 +38,38 @@
         {% for name in column_names %}
 
             { 
-                field: "{{ name }}", 
-                filter: true, 
+                field: "{{ name }}",
+
+                {% if 'date' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Дата' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Время' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'time' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'zaman' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Tarihi' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% else %}
+                
+                filter: true,
+
+                {% endif %}
+
                 filterParams: {
                     buttons: ['apply', 'reset'],
                     closeOnApply: true,
@@ -89,7 +119,7 @@
     function showSelected(event) {
         var data_values = Object.values(event.data);
         var id = data_values[0];
-        location.replace(`/ru/student/${id}/`);
+        location.replace(`/student/${id}/`);
     }
 
     // Function to toggle visibility of Select Columns section

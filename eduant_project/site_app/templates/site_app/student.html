@@ -48,7 +48,17 @@
 
             { 
                 field: "{{ name }}", 
-                filter: true, 
+                
+                {% if 'date' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% else %}
+                
+                filter: true,
+
+                {% endif %}
+
                 filterParams: {
                     buttons: ['apply', 'reset'],
                     closeOnApply: true,
