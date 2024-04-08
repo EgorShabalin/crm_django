@@ -42,14 +42,22 @@
 <div id="myGrid" class="ag-theme-quartz" style="height: 300px;"></div>
 
 
+<h3 class='content'>{% trans 'Courses' %}:</h3>
+<div id="myGrid3" class="ag-theme-quartz" style="height: 300px;"></div>
+
+
 <h3 class='content'>{% trans 'Grades' %}:</h3>
 <div id="myGrid2" class="ag-theme-quartz" style="height: 300px;"></div>
+
+
+
 
 
 <script>
 
     let gridApi;
     let gridApi2;
+    let gridApi3;
 
     const columnDefs = [
         {% for name in representatives_columns %}
@@ -213,9 +221,90 @@
     }
     gridApi2 = agGrid.createGrid(myGridElement2, gridOptions2);
 
+
+    const myGridElement3 = document.querySelector('#myGrid3');
+    const columnDefs3 = [
+        {% for column in courses_columns %}
+
+            { 
+                field: "{{ column }}",
+
+                {% if 'date' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Дата' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Время' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'time' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'zaman' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Tarihi' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% else %}
+                
+                filter: true,
+
+                {% endif %}
+
+                filterParams: {
+                    buttons: ['apply', 'reset'],
+                    closeOnApply: true,
+                },
+                hide: false,                
+            },
+
+        {% endfor %}
+    ];
+
+    const rowData3 = [
+        {% for element in courses_dicts_list %}
+
+            {
+                
+                {% for k, v in element.items %}
+
+                '{{ k }}': '{{ v }}', 
+                    
+                {% endfor %}
+
+                resizable: true,
+                
+            },
+    
+        {% endfor %}
+    ];
+    
+    const gridOptions3 = {
+        pagination: true,
+        paginationPageSize: 100,
+        paginationPageSizeSelector: [100, 200, 500],
+        rowSelection: 'multiple',        
+        onRowSelected: showSelected,
+        autoSizeStrategy: {
+            type: 'fitCellContents'
+        },
+        columnDefs: columnDefs3,
+        rowData: rowData3,
+    }
+    gridApi3 = agGrid.createGrid(myGridElement3, gridOptions3);
+
     
     function showSelected(event) {
         var data_values = Object.values(event.data);
+        console.log("DATA VALUES:", data_values);
         var id = data_values[0];
         location.replace(`#`);
     }

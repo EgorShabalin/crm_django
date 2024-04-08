@@ -100,18 +100,35 @@ def grid(request):
     )
 
 
+def create_grid_content(cls, queryset):
+    columns = []
+    for field in cls._meta.fields:
+        columns.append(field.verbose_name)
+    dicts_list = []
+    for i in queryset:
+        key_value_pairs = [
+            (field.verbose_name, getattr(i, field.name)) for field in cls._meta.fields
+        ]
+        dicts_list.append(dict(key_value_pairs))
+    result = [columns, dicts_list]
+    return result
+
+
 @login_required
 def tabulator(request):
     students = Student.objects.all()
-    field_names = []
-    for field in Student._meta.fields:
-        field_names.append(field.name)
-    student_values = []
-    for student in students:
-        values = [
-            (field.name, getattr(student, field.name)) for field in Student._meta.fields
-        ]
-        student_values.append(dict(values))
+    content = create_grid_content(Student, students)
+    field_names = content[0]
+    student_values = content[1]
+    # field_names = []
+    # for field in Student._meta.fields:
+    #    field_names.append(field.name)
+    # student_values = []
+    # for student in students:
+    #    values = [
+    #        (field.name, getattr(student, field.name)) for field in Student._meta.fields
+    #    ]
+    #    student_values.append(dict(values))
     return render(
         request,
         "site_app/tabulator.html",
@@ -126,16 +143,9 @@ def tabulator(request):
 @login_required
 def ag_grid(request):
     students = Student.objects.all()
-    column_names = []
-    for field in Student._meta.fields:
-        column_names.append(field.verbose_name)
-    student_dict_list = []
-    for student in students:
-        key_value_pairs = [
-            (field.verbose_name, getattr(student, field.name))
-            for field in Student._meta.fields
-        ]
-        student_dict_list.append(dict(key_value_pairs))
+    content = create_grid_content(Student, students)
+    column_names = content[0]
+    student_dict_list = content[1]
 
     return render(
         request,
@@ -152,29 +162,20 @@ def ag_grid(request):
 def student(request, pk):
     current_student = Student.objects.get(id=pk)
     representatives = Representative.objects.filter(student=current_student)
+    courses = Course.objects.filter(student=current_student)
     grades = Grade.objects.filter(student=current_student)
 
-    representatives_columns = []
-    for field in Representative._meta.fields:
-        representatives_columns.append(field.verbose_name)
-    representative_dicts_list = []
-    for representative in representatives:
-        key_value_pairs = [
-            (field.verbose_name, getattr(representative, field.name))
-            for field in Representative._meta.fields
-        ]
-        representative_dicts_list.append(dict(key_value_pairs))
+    representatives_content = create_grid_content(Representative, representatives)
+    representatives_columns = representatives_content[0]
+    representative_dicts_list = representatives_content[1]
 
-    grades_columns = []
-    for field in Grade._meta.fields:
-        grades_columns.append(field.verbose_name)
-    grades_dicts_list = []
-    for grade in grades:
-        key_value_pairs = [
-            (field.verbose_name, getattr(grade, field.name))
-            for field in Grade._meta.fields
-        ]
-        grades_dicts_list.append(dict(key_value_pairs))
+    grades_content = create_grid_content(Grade, grades)
+    grades_columns = grades_content[0]
+    grades_dicts_list = grades_content[1]
+
+    courses_content = create_grid_content(Course, courses)
+    courses_columns = courses_content[0]
+    courses_dicts_list = courses_content[1]
 
     return render(
         request,
@@ -186,5 +187,8 @@ def student(request, pk):
             "representative_dicts_list": representative_dicts_list,
             "grades_columns": grades_columns,
             "grades_dicts_list": grades_dicts_list,
+            "courses": courses,
+            "courses_columns": courses_columns,
+            "courses_dicts_list": courses_dicts_list,
         },
     )

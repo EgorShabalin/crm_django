@@ -151,6 +151,7 @@ class Course(models.Model):
         max_length=255,
         verbose_name=_("Course name"),
     )
+    student = models.ManyToManyField(Student)
 
     created_at = models.DateTimeField(
         auto_now_add=True,
