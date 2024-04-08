@@ -152,9 +152,11 @@ def ag_grid(request):
 def student(request, pk):
     current_student = Student.objects.get(id=pk)
     representatives = Representative.objects.filter(student=current_student)
-    column_names = []
+    grades = Grade.objects.filter(student=current_student)
+
+    representatives_columns = []
     for field in Representative._meta.fields:
-        column_names.append(field.verbose_name)
+        representatives_columns.append(field.verbose_name)
     representative_dicts_list = []
     for representative in representatives:
         key_value_pairs = [
@@ -163,13 +165,26 @@ def student(request, pk):
         ]
         representative_dicts_list.append(dict(key_value_pairs))
 
+    grades_columns = []
+    for field in Grade._meta.fields:
+        grades_columns.append(field.verbose_name)
+    grades_dicts_list = []
+    for grade in grades:
+        key_value_pairs = [
+            (field.verbose_name, getattr(grade, field.name))
+            for field in Grade._meta.fields
+        ]
+        grades_dicts_list.append(dict(key_value_pairs))
+
     return render(
         request,
         "site_app/student.html",
         {
             "current_student": current_student,
             "representatives": representatives,
-            "column_names": column_names,
+            "representatives_columns": representatives_columns,
             "representative_dicts_list": representative_dicts_list,
+            "grades_columns": grades_columns,
+            "grades_dicts_list": grades_dicts_list,
         },
     )

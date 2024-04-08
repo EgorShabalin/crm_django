@@ -3,31 +3,6 @@ from .config import FORM_OF_STUDY, REPRESENTATIVES
 from django.utils.translation import gettext_lazy as _
 
 
-class Course(models.Model):
-    name = models.CharField(
-        max_length=255,
-        verbose_name=_("Course name"),
-    )
-    price = models.CharField(
-        max_length=255,
-        blank=True,
-        null=True,
-        verbose_name=_("Course price"),
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name=_("Created time"),
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name=_("Updated time"),
-    )
-
-    def __str__(self):
-        return self.name
-
-
 class Student(models.Model):
     first_name = models.CharField(
         max_length=255,
@@ -63,11 +38,7 @@ class Student(models.Model):
         null=True,
         verbose_name=_("Residence Permit End Date"),
     )
-    course = models.ForeignKey(
-        Course,
-        on_delete=models.PROTECT,
-        verbose_name=_("Course"),
-    )
+
     date_enroll = models.DateField(
         verbose_name=_("Date of enrollment"),
     )
@@ -173,6 +144,58 @@ class Student(models.Model):
 
     class Meta:
         ordering = ("-created_at",)
+
+
+class Course(models.Model):
+    name = models.CharField(
+        max_length=255,
+        verbose_name=_("Course name"),
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_("Created time"),
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_("Updated time"),
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class Grade(models.Model):
+    student = models.ForeignKey(
+        Student,
+        on_delete=models.PROTECT,
+        verbose_name=_("Student"),
+    )
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.PROTECT,
+        verbose_name=_("Course"),
+    )
+    subject = models.CharField(
+        max_length=255,
+        verbose_name=_("Subject"),
+    )
+    grade = models.CharField(
+        max_length=255,
+        verbose_name=_("Grade"),
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_("Created time"),
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_("Updated time"),
+    )
+
+    def __str__(self):
+        return str(self.course) + " " + self.subject + " " + self.grade
 
 
 class Representative(models.Model):

@@ -15,6 +15,8 @@
     <h2>{% trans 'Student' %}: {{ current_student.first_name }} {{ current_student.last_name }} {{ current_student.middle_name }}</h2>
 </div>
 
+<h3 class='content'>{% trans 'Representatives' %}:</h3>
+
 <!-- Toggle button to show/hide Select Columns section -->
 <button class='button' id="toggle-columns-btn" onclick="toggleColumnsSelection()">{% trans 'Select columns' %}</button>
 
@@ -36,20 +38,46 @@
 
 <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
 
+
 <div id="myGrid" class="ag-theme-quartz" style="height: 300px;"></div>
+
+
+<h3 class='content'>{% trans 'Grades' %}:</h3>
+<div id="myGrid2" class="ag-theme-quartz" style="height: 300px;"></div>
 
 
 <script>
 
     let gridApi;
+    let gridApi2;
 
     const columnDefs = [
-        {% for name in column_names %}
+        {% for name in representatives_columns %}
 
             { 
-                field: "{{ name }}", 
-                
+                field: "{{ name }}",
+
                 {% if 'date' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Дата' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Время' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'time' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'zaman' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Tarihi' in name %}
 
                 filter: "agDateColumnFilter",
 
@@ -85,7 +113,7 @@
             },
     
         {% endfor %}
-    ]
+    ];
 
     const gridOptions = {
         pagination: true,
@@ -98,11 +126,92 @@
         },
         columnDefs,
         rowData,
+        
     };
     
 
     const myGridElement = document.querySelector('#myGrid');
     gridApi = agGrid.createGrid(myGridElement, gridOptions);
+
+
+    const myGridElement2 = document.querySelector('#myGrid2');
+    const columnDefs2 = [
+        {% for column in grades_columns %}
+
+            { 
+                field: "{{ column }}",
+
+                {% if 'date' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Дата' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Время' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'time' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'zaman' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Tarihi' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% else %}
+                
+                filter: true,
+
+                {% endif %}
+
+                filterParams: {
+                    buttons: ['apply', 'reset'],
+                    closeOnApply: true,
+                },
+                hide: false,                
+            },
+
+        {% endfor %}
+    ];
+
+    const rowData2 = [
+        {% for element in grades_dicts_list %}
+
+            {
+                
+                {% for k, v in element.items %}
+
+                '{{ k }}': '{{ v }}', 
+                    
+                {% endfor %}
+
+                resizable: true,
+                
+            },
+    
+        {% endfor %}
+    ];
+    
+    const gridOptions2 = {
+        pagination: true,
+        paginationPageSize: 100,
+        paginationPageSizeSelector: [100, 200, 500],
+        rowSelection: 'multiple',        
+        onRowSelected: showSelected,
+        autoSizeStrategy: {
+            type: 'fitCellContents'
+        },
+        columnDefs: columnDefs2,
+        rowData: rowData2,
+    }
+    gridApi2 = agGrid.createGrid(myGridElement2, gridOptions2);
 
     
     function showSelected(event) {
