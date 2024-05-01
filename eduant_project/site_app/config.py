@@ -1,10 +1,12 @@
+from django.utils.translation import gettext_lazy as _
+
 FORM_OF_STUDY = (
-    ("Очно", "Очно"),
-    ("Заочно", "Заочно"),
+    ("In Person", _("In Person")),
+    ("Distance", _("Distance")),
 )
 
 REPRESENTATIVES = (
-    ("Отец", "Отец"),
-    ("Мать", "Мать"),
-    ("Представитель", "Представитель"),
+    ("Father", _("Father")),
+    ("Mother", _("Mother")),
+    ("Representative", _("Representative")),
 )

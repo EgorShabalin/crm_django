@@ -1,0 +1,53 @@
+{% extends 'site_app/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+
+<a class='button' href="{% url "site_app:ag_grid" %}">{% trans 'GRID' %}</a>
+<br>
+<div class='content'>
+        
+    <h3><a href="{% url "site_app:student" current_student.id %}">{% trans 'Student' %}: {{ current_student }}</a></h3>
+    <h4>{% trans 'Orders' %}: </h4>
+    
+    <center>
+    {% for order in orders %}
+    <table class="table_description">
+        <tr>
+            <td>
+                <b>{% trans 'Subject of order' %}:</b>
+            </td>
+            <td>
+                <span><b>{{ order.subject }}</b></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans 'Issued By' %}:</b>
+            </td>
+            <td>
+                <span><b>{{ order.issued_by }}</b></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>{% trans 'Issue Date' %}:</b>
+            </td>
+            <td>
+                <span><b>{{ order.date_issued }}</b></span>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    {% endfor %}
+    </center>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

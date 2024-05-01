@@ -1,0 +1,32 @@
+{% extends 'site_app/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+
+<div class='content'>
+    <div class='flex_box_h'>
+        <a class='button' href="{% url "site_app:ag_grid" %}">{% trans 'STUDENTS' %}</a>
+        <a class='button' href="{% url "site_app:contracts" %}">{% trans 'CONTRACTS' %}</a>
+        <a class='button' href="{% url "site_app:representatives_all" %}">{% trans 'REPRESENTATIVES' %}</a>
+        <a class='button_on' href="{% url "site_app:courses" %}">{% trans 'COURSES' %}</a>
+    </div>
+        
+    <h3>{% trans 'Courses' %}: </h3>
+    
+    <center>
+    {% for course in courses %}
+
+        <a href="{% url "site_app:course" course.id %}"><h5>{{ course }}</h5></a>
+
+    {% endfor %}
+    </center>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

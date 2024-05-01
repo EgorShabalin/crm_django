@@ -6,6 +6,18 @@
 
 {% if request.user.is_authenticated %}
 
+<div class='content'>
+    <div class='flex_box_h'>
+        <a class='button_on' href="{% url "site_app:ag_grid" %}">{% trans 'STUDENTS' %}</a>
+        <a class='button' href="{% url "site_app:contracts" %}">{% trans 'CONTRACTS' %}</a>
+        <a class='button' href="{% url "site_app:representatives_all" %}">{% trans 'REPRESENTATIVES' %}</a>
+        <a class='button' href="{% url "site_app:courses" %}">{% trans 'COURSES' %}</a>
+    </div>
+
+    <h3>{% trans 'Students' %}:</h3>
+
+</div>
+
 <!-- Toggle button to show/hide Select Columns section -->
 <button class='button' id="toggle-columns-btn" onclick="toggleColumnsSelection()">{% trans 'Select columns' %}</button>
 
@@ -14,7 +26,7 @@
     <!-- Add checkboxes for column selection -->
     <div class='checkbox_list'>
         {% for name in column_names %}
-            <div>
+            <div class="columns_switcher">
                 <input type="checkbox" id="{{ name }}" name="{{ name }}" value="{{ name }}" checked>
                 <label for="{{ name }}">{{ name }}</label>
             </div>
@@ -27,7 +39,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
 
-<div id="myGrid" class="ag-theme-quartz" style="height: 800px;"></div>
+<div id="myGrid" class="ag-theme-quartz" style="height: 400px;"></div>
 
 
 <script>
@@ -109,6 +121,12 @@
         },
         columnDefs,
         rowData,
+        getRowStyle: params => {        
+        if (params.data['Должник'] === "True" || params.data['Debtor'] === "True" || params.data['Borçlu'] === "True") {            
+            return { background: 'tomato' };
+            }
+        }
+        
     };
     
 

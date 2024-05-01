@@ -1,0 +1,283 @@
+{% extends 'site_app/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+
+<a class='button' href="{% url "site_app:ag_grid" %}">{% trans 'GRID' %}</a>
+<br>
+<div class='content'>
+        
+    <h3>{% trans 'Contract' %}: {{ contract.contract_id }} {% trans "from" %} {{ contract.contract_date }}</h3>
+    
+    <br/>
+    
+    <div class='flex_box_h'>
+
+        <div>
+            
+            <table class="table_description">
+                <tr>
+                    <td>
+                        <b>{% trans 'Contract Price' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ contract.contract_price }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Final Settlement Date' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ contract.final_settlement_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Installment Plan' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ contract.installment_plan }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Discount' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ contract.discount }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Promotion' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ contract.promotion }}</span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <b>{% trans 'Students by contract' %}:</b>
+                    </td>
+                    <td>
+                        <span>
+                            <ol>
+                                {% for s in students %}
+                                    <li><a href="{% url 'site_app:student' s.id %}">{{ s }}</a></li>
+                                {% endfor %}
+                            </ol>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Time Created' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ contract.created_at }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Time Updated' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ contract.updated_at }}</span>
+                    </td>
+                </tr>                
+            </table>            
+                
+            <br>
+        </div>
+        <div>    
+            <h4>{% trans 'Contractor' %}:</h4>
+
+            
+                {% if photos %}
+                    <img class='avatar' src="{{ photos.first }}" alt="img">
+                {% else %}
+                    <img class='avatar' src="/static/site_app/avatar_boy.png" alt="img">
+                {% endif %}
+            
+            <br/>            
+                
+            <table class="table_description">
+                <tr>
+                    <td>
+                        <b>{% trans 'Contractor' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Birth Date' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.birth_date }}</span>
+                    </td>
+                </tr>                    
+                <tr>
+                    <td>
+                        {% trans 'Personal ID' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.personal_id }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Personal ID Details' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.personal_id_details }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Country' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.country }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'City' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.city }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Address' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.address }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Language' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.language }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Representative Type' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.representative_type }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Phone' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.phone }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Email' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.email }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Other Contact' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.other_contact }}</span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        {% trans 'Time Created' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.created_at }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Time Updated' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contractor.updated_at }}</span>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+        </div>  
+
+        <div>
+            <h4>{% trans 'Payments' %}:</h4>
+            {% for payment in payments %}
+            <table class="table_description">
+                <tr>
+                    <td>
+                        <b>{% trans 'Payment amount' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ payment.payment_amount }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Pay Date' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ payment.pay_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Payed' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ payment.payed }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Time Created' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ payment.created_at }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>{% trans 'Time Updated' %}:</b>
+                    </td>
+                    <td>
+                        <span>{{ payment.updated_at }}</span>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            {% endfor %}
+        </div>
+    
+    </div>
+    
+</div>
+
+{% endif %}
+
+{% endblock %}

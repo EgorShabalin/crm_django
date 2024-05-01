@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 
 from .forms import SignupForm, EditUserForm
 from .models import *
@@ -20,7 +22,7 @@ def signup(request):
 
         if form.is_valid():
             form.save()
-
+            messages.success(request, _("You have been Signed Up!"))
             return redirect("/")
 
     else:
@@ -49,55 +51,10 @@ def edit_profile(request):
         form = EditUserForm(request.POST or None, instance=current_user)
         if form.is_valid():
             form.save()
+            messages.success(request, _("Profile has been updated!"))
             return redirect("site_app:login")
 
         return render(request, "site_app/edit_profile.html", {"form": form})
-
-
-@login_required
-def table(request):
-    students = Student.objects.all()
-    field_names = []
-    for field in Student._meta.fields:
-        field_names.append(field.verbose_name)
-    student_values = []
-    for student in students:
-        values = [
-            (field.name, getattr(student, field.name)) for field in Student._meta.fields
-        ]
-        student_values.append(dict(values))
-    return render(
-        request,
-        "site_app/table.html",
-        {
-            "students": students,
-            "field_names": field_names,
-            "student_values": student_values,
-        },
-    )
-
-
-@login_required
-def grid(request):
-    students = Student.objects.all()
-    field_names = []
-    for field in Student._meta.fields:
-        field_names.append(field.verbose_name)
-    student_values = []
-    for student in students:
-        values = [
-            (field.name, getattr(student, field.name)) for field in Student._meta.fields
-        ]
-        student_values.append(dict(values))
-    return render(
-        request,
-        "site_app/grid.html",
-        {
-            "students": students,
-            "field_names": field_names,
-            "student_values": student_values,
-        },
-    )
 
 
 def create_grid_content(cls, queryset):
@@ -111,33 +68,8 @@ def create_grid_content(cls, queryset):
         ]
         dicts_list.append(dict(key_value_pairs))
     result = [columns, dicts_list]
+    # print(result)
     return result
-
-
-@login_required
-def tabulator(request):
-    students = Student.objects.all()
-    content = create_grid_content(Student, students)
-    field_names = content[0]
-    student_values = content[1]
-    # field_names = []
-    # for field in Student._meta.fields:
-    #    field_names.append(field.name)
-    # student_values = []
-    # for student in students:
-    #    values = [
-    #        (field.name, getattr(student, field.name)) for field in Student._meta.fields
-    #    ]
-    #    student_values.append(dict(values))
-    return render(
-        request,
-        "site_app/tabulator.html",
-        {
-            "students": students,
-            "field_names": field_names,
-            "student_values": student_values,
-        },
-    )
 
 
 @login_required
@@ -146,6 +78,10 @@ def ag_grid(request):
     content = create_grid_content(Student, students)
     column_names = content[0]
     student_dict_list = content[1]
+
+    column_names.insert(5, "Contract")
+    for i in student_dict_list:
+        i.update({"Contract": Contract.objects.filter(student=i["ID"]).first()})
 
     return render(
         request,
@@ -161,34 +97,238 @@ def ag_grid(request):
 @login_required
 def student(request, pk):
     current_student = Student.objects.get(id=pk)
+    photos = Photo.objects.filter(student=current_student)
     representatives = Representative.objects.filter(student=current_student)
-    courses = Course.objects.filter(student=current_student)
-    grades = Grade.objects.filter(student=current_student)
-
-    representatives_content = create_grid_content(Representative, representatives)
-    representatives_columns = representatives_content[0]
-    representative_dicts_list = representatives_content[1]
-
-    grades_content = create_grid_content(Grade, grades)
-    grades_columns = grades_content[0]
-    grades_dicts_list = grades_content[1]
-
-    courses_content = create_grid_content(Course, courses)
-    courses_columns = courses_content[0]
-    courses_dicts_list = courses_content[1]
+    contracts = Contract.objects.filter(student=current_student)
+    courses = Course.objects.filter(id=current_student.id)
+    residence_permit = Residence_permit.objects.get(student=current_student)
 
     return render(
         request,
         "site_app/student.html",
         {
             "current_student": current_student,
+            "photos": photos,
+            "representatives": representatives,
+            "contracts": contracts,
+            "courses": courses,
+            "residence_permit": residence_permit,
+        },
+    )
+
+
+@login_required
+def representatives(request, pk):
+    current_student = Student.objects.get(id=pk)
+    representatives = Representative.objects.filter(student=current_student)
+
+    representatives_content = create_grid_content(Representative, representatives)
+    representatives_columns = representatives_content[0]
+    representative_dicts_list = representatives_content[1]
+
+    return render(
+        request,
+        "site_app/representatives.html",
+        {
+            "current_student": current_student,
             "representatives": representatives,
             "representatives_columns": representatives_columns,
             "representative_dicts_list": representative_dicts_list,
-            "grades_columns": grades_columns,
-            "grades_dicts_list": grades_dicts_list,
+        },
+    )
+
+
+@login_required
+def representatives_all(request):
+    representatives = Representative.objects.all()
+
+    representatives_content = create_grid_content(Representative, representatives)
+    representatives_columns = representatives_content[0]
+    representative_dicts_list = representatives_content[1]
+
+    return render(
+        request,
+        "site_app/representatives_all.html",
+        {
+            "representatives": representatives,
+            "representatives_columns": representatives_columns,
+            "representative_dicts_list": representative_dicts_list,
+        },
+    )
+
+
+@login_required
+def representative(request, pk):
+    representative = Representative.objects.get(id=pk)
+    students = Student.objects.filter(representative=representative)
+    contracts = Contract.objects.filter(contractor=representative)
+
+    return render(
+        request,
+        "site_app/representative.html",
+        {
+            "representative": representative,
+            "students": students,
+            "contracts": contracts,
+        },
+    )
+
+
+@login_required
+def contracts(request):
+    contracts = Contract.objects.all()
+    contracts_content = create_grid_content(Contract, contracts)
+    contracts_columns = contracts_content[0]
+    contracts_dicts_list = contracts_content[1]
+
+    return render(
+        request,
+        "site_app/contracts.html",
+        {
+            "contracts": contracts,
+            "contracts_columns": contracts_columns,
+            "contracts_dicts_list": contracts_dicts_list,
+        },
+    )
+
+
+@login_required
+def payments(request, pk):
+    contract = Contract.objects.get(id=pk)
+    payments = Payment.objects.filter(contract=contract)
+    students = contract.student.all()
+    representatives = Representative.objects.all()
+    current_representatives = []
+    for student in students:
+        for representative in representatives:
+            if representative.student == student:
+                current_representatives.append(representative)
+
+    return render(
+        request,
+        "site_app/payments.html",
+        {
+            "contract": contract,
+            "payments": payments,
+            "students": students,
+            "current_representatives": current_representatives,
+        },
+    )
+
+
+@login_required
+def course(request, pk):
+    current_course = Course.objects.get(id=pk)
+    subjects = Subject.objects.filter(course=current_course)
+
+    return render(
+        request,
+        "site_app/course.html",
+        {
+            "current_course": current_course,
+            "subjects": subjects,
+        },
+    )
+
+
+@login_required
+def courses(request):
+    courses = Course.objects.all()
+
+    return render(
+        request,
+        "site_app/courses.html",
+        {
             "courses": courses,
-            "courses_columns": courses_columns,
-            "courses_dicts_list": courses_dicts_list,
+        },
+    )
+
+
+@login_required
+def documents(request, pk):
+    current_student = Student.objects.get(id=pk)
+    docs = Document.objects.filter(student=current_student)
+
+    return render(
+        request,
+        "site_app/documents.html",
+        {
+            "current_student": current_student,
+            "docs": docs,
+        },
+    )
+
+
+@login_required
+def orders(request, pk):
+    current_student = Student.objects.get(id=pk)
+    orders = Order.objects.filter(student=current_student)
+
+    return render(
+        request,
+        "site_app/orders.html",
+        {
+            "current_student": current_student,
+            "orders": orders,
+        },
+    )
+
+
+@login_required
+def statements(request, pk):
+    current_student = Student.objects.get(id=pk)
+    statements = Statement.objects.filter(student=current_student)
+
+    return render(
+        request,
+        "site_app/statements.html",
+        {
+            "current_student": current_student,
+            "statements": statements,
+        },
+    )
+
+
+@login_required
+def applications(request, pk):
+    current_student = Student.objects.get(id=pk)
+    applications = Application.objects.filter(student=current_student)
+
+    return render(
+        request,
+        "site_app/applications.html",
+        {
+            "current_student": current_student,
+            "applications": applications,
+        },
+    )
+
+
+@login_required
+def grades(request, pk):
+    current_student = Student.objects.get(id=pk)
+    grades = Grade.objects.filter(student=current_student)
+
+    return render(
+        request,
+        "site_app/grades.html",
+        {
+            "current_student": current_student,
+            "grades": grades,
+        },
+    )
+
+
+@login_required
+def internships(request, pk):
+    current_student = Student.objects.get(id=pk)
+    internships = Internship.objects.filter(student=current_student)
+
+    return render(
+        request,
+        "site_app/internships.html",
+        {
+            "current_student": current_student,
+            "internships": internships,
         },
     )

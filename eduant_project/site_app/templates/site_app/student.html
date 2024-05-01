@@ -7,359 +7,402 @@
 {% if request.user.is_authenticated %}
 
 
-<a class='button' href="{% url "site_app:ag_grid" %}">{% trans 'BACK' %}</a>
-<br>
-<br>
+<a class='button' href="{% url "site_app:ag_grid" %}">{% trans 'GRID' %}</a>
 <br>
 <div class='content'>
-    <h2>{% trans 'Student' %}: {{ current_student.first_name }} {{ current_student.last_name }} {{ current_student.middle_name }}</h2>
-</div>
+    {% if current_student.debtor %}
 
-<h3 class='content'>{% trans 'Representatives' %}:</h3>
+    <h2 style='color: tomato'>{% trans 'Student' %}: {{ current_student }} {% trans '! DEBT !' %}</h2>
 
-<!-- Toggle button to show/hide Select Columns section -->
-<button class='button' id="toggle-columns-btn" onclick="toggleColumnsSelection()">{% trans 'Select columns' %}</button>
+    <h3 style='color: tomato'>{% trans 'Sum of debt' %}: SUM OF DEBT HERE</h3>
 
-<!-- Container for Select Columns section -->
-<div id="columns_selection" style="display: none;">
-    <!-- Add checkboxes for column selection -->
-    <div class='checkbox_list'>
-        {% for name in column_names %}
-            <div>
-                <input type="checkbox" id="{{ name }}" name="{{ name }}" value="{{ name }}" checked>
-                <label for="{{ name }}">{{ name }}</label>
-            </div>
-        {% endfor %}
-        <button class='button' onclick="applyColumnSelection()">{% trans 'Apply' %}</button>
-        <button class='button' onclick="toggleAllColumns(true)">{% trans 'Show all' %}</button>
-        <button class='button' onclick="toggleAllColumns(false)">{% trans 'Hide all' %}</button>
+    {% else %}
+
+    <h3>{% trans 'Student' %}: {{ current_student }}</h3>
+    
+    {% endif %}
+
+
+    <div class='flex_box_h'>
+        <a class='button' href='{% url "site_app:representatives" current_student.id %}'>{% trans 'Representatives' %}</a>                
+        <a class='button' href='{% url "site_app:documents" current_student.id %}'>{% trans 'Documents' %}</a>
+        <a class='button' href='{% url "site_app:orders" current_student.id %}'>{% trans 'Orders' %}</a>
+        <a class='button' href='{% url "site_app:statements" current_student.id %}'>{% trans 'Statements' %}</a>
+        <a class='button' href='{% url "site_app:applications" current_student.id %}'>{% trans 'Applications' %}</a>
+        <a class='button' href='{% url "site_app:grades" current_student.id %}'>{% trans 'Grades' %}</a>
+        <a class='button' href='{% url "site_app:internships" current_student.id %}'>{% trans 'Internships' %}</a>
     </div>
+
+    <br/>
+
+    <div class='flex_box_h'>
+
+        <div>
+            {% if photos %}
+            <img class='avatar' src="{{ photos.first }}" alt="img">
+            {% else %}
+            <img class='avatar' src="/static/site_app/avatar_boy.png" alt="img">
+            {% endif %}
+            
+            <h4>{% trans 'Residence Permit' %}: </h4>
+            {% if residence_permit %}
+            <table class="table_description">
+                <tr>
+                    <td>
+                        <b>{% trans 'ID' %}:</b>
+                    </td>
+                    <td>
+                        <span><b>{{ residence_permit.residence_permit_id }}</b></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Issue Date' %}:
+                    </td>
+                    <td>
+                        <span>{{ residence_permit.residence_permit_issue_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'End Date' %}:
+                    </td>
+                    <td>
+                        <span>{{ residence_permit.residence_permit_end_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Arrival Date' %}:
+                    </td>
+                    <td>
+                        <span>{{ residence_permit.arrival_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Student Visa' %}:
+                    </td>
+                    <td>
+                        <span>{{ residence_permit.student_visa }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Registration Address' %}:
+                    </td>
+                    <td>
+                        <span>{{ residence_permit.registration_address }}</span>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        {% trans 'Type' %}:
+                    </td>
+                    <td>
+                        <span>{{ residence_permit.residence_permit_type }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Time Created' %}:
+                    </td>
+                    <td>
+                        <span>{{ residence_permit.created_at }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Time Updated' %}:
+                    </td>
+                    <td>
+                        <span>{{ residence_permit.updated_at }}</span>
+                    </td>
+                </tr>
+            </table>
+            {% endif %}
+        </div>
+
+        <div>
+            <h4>{% trans 'Summary' %}: </h4>
+            <table class="table_description">
+                <tr>
+                    <td>
+                        {% trans 'Birth Date' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.birth_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Course' %}:
+                    </td>
+                    <td>
+                        <span><a href="{% url "site_app:course" current_student.course.id %}">{{ current_student.course }}</a></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Form of Study' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.form_of_study }}</span>
+                    </td>
+                </tr>                
+                <tr>
+                    <td>
+                        {% trans 'Start Date' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.start_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'End Date' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.end_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Personal ID' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.personal_id }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Personal ID Details' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.personal_id_details }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Country' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.country }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'City' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.city }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Address' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.address }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Language' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.language }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Phone' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.phone }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Email' %}:
+                    </td>
+                    <td>
+                        <span><a href="mailto:{{ current_student.email }}">{{ current_student.email }}</a></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Other Contact' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.other_contact }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Active' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.active }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Time Created' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.created_at }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Time Updated' %}:
+                    </td>
+                    <td>
+                        <span>{{ current_student.updated_at }}</span>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+
+            <h4>{% trans 'Representatives' %}:</h4>
+
+                <ol>
+
+                {% for representative in representatives %}
+        
+                    <li><a href="{% url 'site_app:representative' representative.id %}">{{ representative }} - {{ representative.representative_type }}{% if representative.contractor %} - {% trans "Contractor" %}{% endif %}</a></li>
+        
+                {% endfor %}
+
+                </ol>
+                <br/>
+
+        </div>
+
+        <div>
+            <h4>{% trans 'Contracts' %}: </h4>
+            {% for contract in contracts %}
+            <table class="table_description">                
+                
+                <tr>
+                    <td>
+                        <a href="{% url "site_app:payments" contract.id %}"><b>{% trans 'Contract ID' %}:</b></a>
+                    </td>
+                    <td>
+                        <span><a href="{% url "site_app:payments" contract.id %}"><b>{{ contract.contract_id }}</b></a></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Contract Date' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contract_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Contract Price' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.contract_price }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Final Settlement Date' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.final_settlement_date }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Installment Plan' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.installment_plan }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Discount' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.discount }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Promotion' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.promotion }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Contractor' %}:
+                    </td>
+                    <td>
+                        <span><a href="{% url "site_app:representative" contract.contractor.id %}">{{ contract.contractor }}</a></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Students by contract' %}:
+                    </td>
+                    <td>
+                        <span>
+                            <ol>
+                                {% for s in contract.student.all %}
+                                    <li><a href="{% url "site_app:student" s.id %}">{{ s }}</li>
+                                {% endfor %}
+                            </ol>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Active' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.active }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Time Created' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.created_at }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% trans 'Time Updated' %}:
+                    </td>
+                    <td>
+                        <span>{{ contract.updated_at }}</span>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            {% endfor %}
+                
+            <br>
+            
+            
+
+        </div>
+
+        
+    
+    </div>
+    
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
-
-
-<div id="myGrid" class="ag-theme-quartz" style="height: 300px;"></div>
-
-
-<h3 class='content'>{% trans 'Courses' %}:</h3>
-<div id="myGrid3" class="ag-theme-quartz" style="height: 300px;"></div>
-
-
-<h3 class='content'>{% trans 'Grades' %}:</h3>
-<div id="myGrid2" class="ag-theme-quartz" style="height: 300px;"></div>
-
-
-
-
-
-<script>
-
-    let gridApi;
-    let gridApi2;
-    let gridApi3;
-
-    const columnDefs = [
-        {% for name in representatives_columns %}
-
-            { 
-                field: "{{ name }}",
-
-                {% if 'date' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'Дата' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'Время' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'time' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'zaman' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'Tarihi' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% else %}
-                
-                filter: true,
-
-                {% endif %}
-
-                filterParams: {
-                    buttons: ['apply', 'reset'],
-                    closeOnApply: true,
-                },
-                hide: false,                
-            },
-
-        {% endfor %}
-    ];
-
-    const rowData = [
-        {% for element in representative_dicts_list %}
-
-            {
-                
-                {% for k, v in element.items %}
-
-                '{{ k }}': '{{ v }}', 
-                    
-                {% endfor %}
-
-                resizable: true,
-                
-            },
-    
-        {% endfor %}
-    ];
-
-    const gridOptions = {
-        pagination: true,
-        paginationPageSize: 100,
-        paginationPageSizeSelector: [100, 200, 500],
-        rowSelection: 'multiple',        
-        onRowSelected: showSelected,
-        autoSizeStrategy: {
-            type: 'fitCellContents'
-        },
-        columnDefs,
-        rowData,
-        
-    };
-    
-
-    const myGridElement = document.querySelector('#myGrid');
-    gridApi = agGrid.createGrid(myGridElement, gridOptions);
-
-
-    const myGridElement2 = document.querySelector('#myGrid2');
-    const columnDefs2 = [
-        {% for column in grades_columns %}
-
-            { 
-                field: "{{ column }}",
-
-                {% if 'date' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'Дата' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'Время' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'time' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'zaman' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'Tarihi' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% else %}
-                
-                filter: true,
-
-                {% endif %}
-
-                filterParams: {
-                    buttons: ['apply', 'reset'],
-                    closeOnApply: true,
-                },
-                hide: false,                
-            },
-
-        {% endfor %}
-    ];
-
-    const rowData2 = [
-        {% for element in grades_dicts_list %}
-
-            {
-                
-                {% for k, v in element.items %}
-
-                '{{ k }}': '{{ v }}', 
-                    
-                {% endfor %}
-
-                resizable: true,
-                
-            },
-    
-        {% endfor %}
-    ];
-    
-    const gridOptions2 = {
-        pagination: true,
-        paginationPageSize: 100,
-        paginationPageSizeSelector: [100, 200, 500],
-        rowSelection: 'multiple',        
-        onRowSelected: showSelected,
-        autoSizeStrategy: {
-            type: 'fitCellContents'
-        },
-        columnDefs: columnDefs2,
-        rowData: rowData2,
-    }
-    gridApi2 = agGrid.createGrid(myGridElement2, gridOptions2);
-
-
-    const myGridElement3 = document.querySelector('#myGrid3');
-    const columnDefs3 = [
-        {% for column in courses_columns %}
-
-            { 
-                field: "{{ column }}",
-
-                {% if 'date' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'Дата' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'Время' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'time' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'zaman' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% elif 'Tarihi' in name %}
-
-                filter: "agDateColumnFilter",
-
-                {% else %}
-                
-                filter: true,
-
-                {% endif %}
-
-                filterParams: {
-                    buttons: ['apply', 'reset'],
-                    closeOnApply: true,
-                },
-                hide: false,                
-            },
-
-        {% endfor %}
-    ];
-
-    const rowData3 = [
-        {% for element in courses_dicts_list %}
-
-            {
-                
-                {% for k, v in element.items %}
-
-                '{{ k }}': '{{ v }}', 
-                    
-                {% endfor %}
-
-                resizable: true,
-                
-            },
-    
-        {% endfor %}
-    ];
-    
-    const gridOptions3 = {
-        pagination: true,
-        paginationPageSize: 100,
-        paginationPageSizeSelector: [100, 200, 500],
-        rowSelection: 'multiple',        
-        onRowSelected: showSelected,
-        autoSizeStrategy: {
-            type: 'fitCellContents'
-        },
-        columnDefs: columnDefs3,
-        rowData: rowData3,
-    }
-    gridApi3 = agGrid.createGrid(myGridElement3, gridOptions3);
-
-    
-    function showSelected(event) {
-        var data_values = Object.values(event.data);
-        console.log("DATA VALUES:", data_values);
-        var id = data_values[0];
-        location.replace(`#`);
-    }
-
-
-
-
-    // Function to toggle visibility of Select Columns section
-    function toggleColumnsSelection() {
-        const columnsSelection = document.getElementById('columns_selection');
-        const toggleButton = document.getElementById('toggle-columns-btn');
-        if (columnsSelection.style.display === 'none') {
-            columnsSelection.style.display = 'flex';            
-            toggleButton.textContent = '{% trans 'Hide selector' %}';
-        } else {
-            columnsSelection.style.display = 'none';
-            toggleButton.textContent = '{% trans 'Select columns' %}';
-        }
-    }
-
-    // Function to toggle column visibility based on checkbox state
-    function applyColumnSelection() {
-
-        gridApi.destroy();
-
-        var checkboxes = document.querySelectorAll('#columns_selection input[type="checkbox"]');
-    
-    for (var i = 0; i < checkboxes.length; i++) {
-        var fieldName = checkboxes[i].value;
-        var hide = !checkboxes[i].checked; // Inverse the checked state
-
-        // Find the corresponding object in columnDefs and update the hide property
-        for (var j = 0; j < columnDefs.length; j++) {
-            if (columnDefs[j].field === fieldName) {
-                columnDefs[j].hide = hide;
-                break; // Break the loop once found
-            }
-        }
-    }
-        
-        gridApi= agGrid.createGrid(myGridElement, gridOptions);
-        //console.log("Updated columnDefs:", columnDefs);
-        
-    }
-
-    // Function to toggle state of all checkboxes
-    function toggleAllColumns(checked) {
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = checked;
-        });
-    }
-
-</script>
-
 
 {% endif %}
 

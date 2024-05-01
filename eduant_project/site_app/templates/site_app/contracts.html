@@ -1,0 +1,194 @@
+{% extends 'site_app/base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+<div class='content'>
+    <div class='flex_box_h'>
+        <a class='button' href="{% url "site_app:ag_grid" %}">{% trans 'STUDENTS' %}</a>
+        <a class='button_on' href="{% url "site_app:contracts" %}">{% trans 'CONTRACTS' %}</a>
+        <a class='button' href="{% url "site_app:representatives_all" %}">{% trans 'REPRESENTATIVES' %}</a>
+        <a class='button' href="{% url "site_app:courses" %}">{% trans 'COURSES' %}</a>
+    </div>
+
+    <h3>{% trans 'Contracts' %}:</h3>
+
+</div>
+
+<!-- Toggle button to show/hide Select Columns section -->
+<button class='button' id="toggle-columns-btn" onclick="toggleColumnsSelection()">{% trans 'Select columns' %}</button>
+
+<!-- Container for Select Columns section -->
+<div id="columns_selection" style="display: none;">
+    <!-- Add checkboxes for column selection -->
+    <div class='checkbox_list'>
+        {% for name in column_names %}
+            <div>
+                <input type="checkbox" id="{{ name }}" name="{{ name }}" value="{{ name }}" checked>
+                <label for="{{ name }}">{{ name }}</label>
+            </div>
+        {% endfor %}
+        <button class='button' onclick="applyColumnSelection()">{% trans 'Apply' %}</button>
+        <button class='button' onclick="toggleAllColumns(true)">{% trans 'Show all' %}</button>
+        <button class='button' onclick="toggleAllColumns(false)">{% trans 'Hide all' %}</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.js"></script>
+
+<div id="myGrid" class="ag-theme-quartz" style="height: 400px;"></div>
+
+
+<script>
+
+    let gridApi;
+
+    const columnDefs = [
+        {% for name in contracts_columns %}
+
+            { 
+                field: "{{ name }}",
+
+                {% if 'date' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Дата' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Время' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'time' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'zaman' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% elif 'Tarihi' in name %}
+
+                filter: "agDateColumnFilter",
+
+                {% else %}
+                
+                filter: true,
+
+                {% endif %}
+
+                filterParams: {
+                    buttons: ['apply', 'reset'],
+                    closeOnApply: true,
+                },
+                hide: false,                
+            },
+
+        {% endfor %}
+    ];
+
+    const rowData = [
+        {% for element in contracts_dicts_list %}
+
+            {
+                
+                {% for k, v in element.items %}
+
+                '{{ k }}': '{{ v }}', 
+                    
+                {% endfor %}
+
+                resizable: true,
+                
+            },
+    
+        {% endfor %}
+    ]
+
+    const gridOptions = {
+        pagination: true,
+        paginationPageSize: 100,
+        paginationPageSizeSelector: [100, 200, 500],
+        rowSelection: 'multiple',        
+        onRowSelected: showSelected,
+        autoSizeStrategy: {
+            type: 'fitCellContents'
+        },
+        columnDefs,
+        rowData,
+        getRowStyle: params => {        
+        if (params.data['Должник'] === "True" || params.data['Debtor'] === "True" || params.data['Borçlu'] === "True") {            
+            return { background: 'tomato' };
+            }
+        }
+        
+    };
+    
+
+    const myGridElement = document.querySelector('#myGrid');
+    gridApi = agGrid.createGrid(myGridElement, gridOptions);
+
+    
+    function showSelected(event) {
+        var data_values = Object.values(event.data);
+        var id = data_values[0];
+        location.replace(`/payments/${id}/`);
+    }
+
+    // Function to toggle visibility of Select Columns section
+    function toggleColumnsSelection() {
+        const columnsSelection = document.getElementById('columns_selection');
+        const toggleButton = document.getElementById('toggle-columns-btn');
+        if (columnsSelection.style.display === 'none') {
+            columnsSelection.style.display = 'flex';            
+            toggleButton.textContent = '{% trans 'Hide selector' %}';
+        } else {
+            columnsSelection.style.display = 'none';
+            toggleButton.textContent = '{% trans 'Select columns' %}';
+        }
+    }
+
+    // Function to toggle column visibility based on checkbox state
+    function applyColumnSelection() {
+
+        gridApi.destroy();
+
+        var checkboxes = document.querySelectorAll('#columns_selection input[type="checkbox"]');
+    
+    for (var i = 0; i < checkboxes.length; i++) {
+        var fieldName = checkboxes[i].value;
+        var hide = !checkboxes[i].checked; // Inverse the checked state
+
+        // Find the corresponding object in columnDefs and update the hide property
+        for (var j = 0; j < columnDefs.length; j++) {
+            if (columnDefs[j].field === fieldName) {
+                columnDefs[j].hide = hide;
+                break; // Break the loop once found
+            }
+        }
+    }
+        
+        gridApi= agGrid.createGrid(myGridElement, gridOptions);
+        //console.log("Updated columnDefs:", columnDefs);
+        
+    }
+
+    // Function to toggle state of all checkboxes
+    function toggleAllColumns(checked) {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = checked;
+        });
+    }
+
+</script>
+
+
+{% endif %}
+
+{% endblock %}
