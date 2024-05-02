@@ -1,0 +1,59 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        @font-face {
+            font-family: "Open Sans", sans-serif;
+            
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+        }
+    </style>'
+    <title>Приказ о зачислении № {{ order.order_id }}</title>
+</head>
+
+<body>
+    <center>
+
+        <h1>Приказ о зачислении № {{ order.order_id }}</h1>
+
+        <div>
+
+            <div>
+                Город Анталья
+            </div>
+
+            <div>
+                {{ order.date_issued }}
+            </div>
+
+        </div>
+
+        <p>Зачислить студента {{ order.student }} на {{ order.student.course }} с {{ order.date_issued }}г.</p>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <p>Декан ___________________________________ подпись</p>
+
+    </center>
+</body>
+
+</html>
