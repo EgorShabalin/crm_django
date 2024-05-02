@@ -12,9 +12,10 @@
 <div class='content'>
     {% if current_student.debtor %}
 
-    <h2 style='color: tomato'>{% trans 'Student' %}: {{ current_student }} {% trans '! DEBT !' %}</h2>
+    <h3 style='color: tomato'>{% trans 'Student' %}: {{ current_student }}</h3>
 
-    <h3 style='color: tomato'>{% trans 'Sum of debt' %}: SUM OF DEBT HERE</h3>
+    <h4 style='color: tomato'>{% trans 'Sum of debt' %}: {{ debt }}</h4>
+    <h4 style='color: tomato'>{% trans 'Date of debt' %}: {{ debt_date }}</h4>
 
     {% else %}
 

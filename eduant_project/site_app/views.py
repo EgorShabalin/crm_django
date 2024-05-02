@@ -7,6 +7,12 @@ from .forms import SignupForm, EditUserForm
 from .models import *
 from custom_user.models import User
 
+from datetime import *
+
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
 
 def index(request):
     return render(
@@ -27,6 +33,7 @@ def signup(request):
 
     else:
         form = SignupForm()
+        messages.success(request, _("Something went wrong! Try one more time!"))
 
     return render(request, "site_app/signup.html", {"form": form})
 
@@ -53,6 +60,8 @@ def edit_profile(request):
             form.save()
             messages.success(request, _("Profile has been updated!"))
             return redirect("site_app:login")
+        else:
+            messages.success(request, _("Something went wrong! Try one more time!"))
 
         return render(request, "site_app/edit_profile.html", {"form": form})
 
@@ -72,9 +81,35 @@ def create_grid_content(cls, queryset):
     return result
 
 
+def check_debt(request):
+    payments = Payment.objects.all()
+
+    today = datetime.today()
+    # print(f"n/ TODAY: {today}/n")
+
+    for payment in payments:
+        # print(f"n/ PAY DATE: {payment.pay_date}/n")
+        if payment.pay_date < today.date() and payment.payed == False:
+            for s in payment.contract.student.all():
+                if s.debtor == False:
+                    s.debtor = True
+                    s.save()
+                messages.success(request, _("There are New Debts!"))
+            return redirect("site_app:ag_grid")
+        elif payment.pay_date < today.date() and payment.payed == True:
+            for s in payment.contract.student.all():
+                s.debtor = False
+                s.save()
+            return redirect("site_app:ag_grid")
+        else:
+            messages.success(request, _("No new Debts!"))
+            return redirect("site_app:ag_grid")
+
+
 @login_required
 def ag_grid(request):
     students = Student.objects.all()
+
     content = create_grid_content(Student, students)
     column_names = content[0]
     student_dict_list = content[1]
@@ -102,6 +137,14 @@ def student(request, pk):
     contracts = Contract.objects.filter(student=current_student)
     courses = Course.objects.filter(id=current_student.id)
     residence_permit = Residence_permit.objects.get(student=current_student)
+    payments = Payment.objects.all()
+    debt = 0
+    debt_date = None
+    for payment in payments:
+        for s in payment.contract.student.all():
+            if s == current_student:
+                debt = debt + payment.payment_amount
+                debt_date = payment.pay_date
 
     return render(
         request,
@@ -113,6 +156,8 @@ def student(request, pk):
             "contracts": contracts,
             "courses": courses,
             "residence_permit": residence_permit,
+            "debt": debt,
+            "debt_date": debt_date,
         },
     )
 
@@ -272,6 +317,23 @@ def orders(request, pk):
             "orders": orders,
         },
     )
+
+
+def generate_pdf(request, pk):
+    # messages.success(request, _("Please wait for the PDF being generated..."))
+    order = Order.objects.get(id=pk)
+    template_path = "site_app/order_for_enrollment.html"
+    context = {"order": order}
+    template = get_template(template_path)
+    html = template.render(context)
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = 'attachment; filename="generated_pdf.pdf"'
+
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    if pisa_status.err:
+        return HttpResponse("Error generating PDF")
+
+    return response
 
 
 @login_required

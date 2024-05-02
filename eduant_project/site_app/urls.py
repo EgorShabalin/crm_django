@@ -35,4 +35,6 @@ urlpatterns = [
     path("applications/<int:pk>/", applications, name="applications"),
     path("grades/<int:pk>/", grades, name="grades"),
     path("internships/<int:pk>/", internships, name="internships"),
+    path("check_debt/", check_debt, name="check_debt"),
+    path("generate_pdf/<int:pk>/", generate_pdf, name="generate_pdf"),
 ]

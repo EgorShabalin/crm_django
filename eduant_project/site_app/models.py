@@ -493,6 +493,11 @@ class Order(models.Model):
         max_length=255,
         verbose_name=_("Subject of Order"),
     )
+    order_id = models.CharField(
+        max_length=255,
+        default=" ",
+        verbose_name=_("Order ID"),
+    )
     issued_by = models.CharField(
         max_length=255,
         verbose_name=_("Issued By"),

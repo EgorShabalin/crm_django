@@ -6,6 +6,11 @@
 
 {% if request.user.is_authenticated %}
 
+<div style='display: none;' id="notification" class="alert alert-warning alert-dismissible fade show" role="alert">
+    {% trans 'Please wait for the PDF file to be generated...' %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
 
 <a class='button' href="{% url "site_app:ag_grid" %}">{% trans 'GRID' %}</a>
 <br>
@@ -27,6 +32,14 @@
         </tr>
         <tr>
             <td>
+                <b>{% trans 'Order ID' %}:</b>
+            </td>
+            <td>
+                <span><b>{{ order.order_id }}</b></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <b>{% trans 'Issued By' %}:</b>
             </td>
             <td>
@@ -43,6 +56,34 @@
         </tr>
     </table>
     <br/>
+    <button class='button' id="generate-pdf-btn">{% trans "Download PDF" %}</button>
+
+    <script>
+        document.getElementById('generate-pdf-btn').addEventListener('click', function() {
+            document.getElementById('notification').style.display = 'block';
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '{% url "site_app:generate_pdf" order.id %}', true);
+            xhr.responseType = 'blob';
+
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    var blob = new Blob([this.response], { type: 'application/pdf' });
+                    var url = window.URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'generated_pdf.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                } else {
+                    console.error('Error generating PDF');
+                }
+            };
+
+            xhr.send();
+        });
+    </script>
     {% endfor %}
     </center>
 

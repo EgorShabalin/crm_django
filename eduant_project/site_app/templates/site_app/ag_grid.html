@@ -12,6 +12,10 @@
         <a class='button' href="{% url "site_app:contracts" %}">{% trans 'CONTRACTS' %}</a>
         <a class='button' href="{% url "site_app:representatives_all" %}">{% trans 'REPRESENTATIVES' %}</a>
         <a class='button' href="{% url "site_app:courses" %}">{% trans 'COURSES' %}</a>
+        <form method="post" action="{% url 'site_app:check_debt' %}">
+            {% csrf_token %}
+            <button class='button' type="submit">{% trans 'CHECK DEBTS' %}</button>
+        </form>
     </div>
 
     <h3>{% trans 'Students' %}:</h3>
