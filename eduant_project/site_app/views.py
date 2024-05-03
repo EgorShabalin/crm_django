@@ -126,6 +126,24 @@ def check_debt(request):
             return redirect("site_app:ag_grid")
 
 
+def hand_over(request, pk):
+    statement = Statement.objects.get(id=pk)
+
+    today = datetime.today()
+
+    if statement.handed_over_date:
+
+        return messages.success(
+            request,
+            _("The Document Has Been Handed Over Already!"),
+        )
+    else:
+        statement.handed_over_date = today
+        statement.save()
+        messages.success(request, _(f"The Document Has Been Handed Over Now!"))
+        return redirect(f"/statements/{statement.student.id}")
+
+
 @login_required
 def ag_grid(request):
     students = Student.objects.all()

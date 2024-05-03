@@ -45,84 +45,87 @@
             <img class='avatar' src="/static/site_app/avatar_boy.png" alt="img">
             {% endif %}
             
-            <h4>{% trans 'Residence Permit' %}: </h4>
-            {% if residence_permit %}
-            <table class="table_description">
-                <tr>
-                    <td>
-                        <b>{% trans 'ID' %}:</b>
-                    </td>
-                    <td>
-                        <span><b>{{ residence_permit.residence_permit_id }}</b></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {% trans 'Issue Date' %}:
-                    </td>
-                    <td>
-                        <span>{{ residence_permit.residence_permit_issue_date }}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {% trans 'End Date' %}:
-                    </td>
-                    <td>
-                        <span>{{ residence_permit.residence_permit_end_date }}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {% trans 'Arrival Date' %}:
-                    </td>
-                    <td>
-                        <span>{{ residence_permit.arrival_date }}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {% trans 'Student Visa' %}:
-                    </td>
-                    <td>
-                        <span>{{ residence_permit.student_visa }}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {% trans 'Registration Address' %}:
-                    </td>
-                    <td>
-                        <span>{{ residence_permit.registration_address }}</span>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>
-                        {% trans 'Type' %}:
-                    </td>
-                    <td>
-                        <span>{{ residence_permit.residence_permit_type }}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {% trans 'Time Created' %}:
-                    </td>
-                    <td>
-                        <span>{{ residence_permit.created_at }}</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {% trans 'Time Updated' %}:
-                    </td>
-                    <td>
-                        <span>{{ residence_permit.updated_at }}</span>
-                    </td>
-                </tr>
-            </table>
-            {% endif %}
+            <div>
+                <br/>
+                <h4>{% trans 'Residence Permit' %}: </h4>
+                {% if residence_permit %}
+                <table class="table_description">
+                    <tr>
+                        <td>
+                            <b>{% trans 'ID' %}:</b>
+                        </td>
+                        <td>
+                            <span><b>{{ residence_permit.residence_permit_id }}</b></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% trans 'Issue Date' %}:
+                        </td>
+                        <td>
+                            <span>{{ residence_permit.residence_permit_issue_date }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% trans 'End Date' %}:
+                        </td>
+                        <td>
+                            <span>{{ residence_permit.residence_permit_end_date }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% trans 'Arrival Date' %}:
+                        </td>
+                        <td>
+                            <span>{{ residence_permit.arrival_date }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% trans 'Student Visa' %}:
+                        </td>
+                        <td>
+                            <span>{{ residence_permit.student_visa }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% trans 'Registration Address' %}:
+                        </td>
+                        <td>
+                            <span>{{ residence_permit.registration_address }}</span>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            {% trans 'Type' %}:
+                        </td>
+                        <td>
+                            <span>{{ residence_permit.residence_permit_type }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% trans 'Time Created' %}:
+                        </td>
+                        <td>
+                            <span>{{ residence_permit.created_at }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% trans 'Time Updated' %}:
+                        </td>
+                        <td>
+                            <span>{{ residence_permit.updated_at }}</span>
+                        </td>
+                    </tr>
+                </table>
+                {% endif %}
+            </div>
         </div>
 
         <div>

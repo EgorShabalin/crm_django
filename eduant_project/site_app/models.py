@@ -1,5 +1,5 @@
 from django.db import models
-from .config import FORM_OF_STUDY, REPRESENTATIVES
+from .config import FORM_OF_STUDY, REPRESENTATIVES, DOCUMENTS
 from django.utils.translation import gettext_lazy as _
 
 
@@ -390,41 +390,21 @@ class Document(models.Model):
         on_delete=models.PROTECT,
         verbose_name=_("Student"),
     )
-    school_leaving_certificate = models.FileField(
-        verbose_name=_("School Graduation Certificate"),
+    name = models.CharField(
+        max_length=255,
+        choices=DOCUMENTS,
+        default=0,
+        verbose_name=_("Document Name"),
     )
-    passport = models.FileField(
-        verbose_name=_("Passport"),
+    description = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name=_("Document Description"),
     )
-    form = models.FileField(
-        verbose_name=_("Form"),
-    )
-    application = models.FileField(
-        verbose_name=_("Application"),
-    )
-    photo = models.FileField(
-        verbose_name=_("Photo"),
-    )
-    birth_cert = models.FileField(
-        verbose_name=_("Birth Certificate"),
-    )
-    exit_application = models.FileField(
-        verbose_name=_("Exit Application"),
-    )
-    agreement_for_residence_permit = models.FileField(
-        verbose_name=_("Agreement For Residence Permit"),
-    )
-    medical_cert = models.FileField(
-        verbose_name=_("Medical Certificate"),
-    )
-    hiv_cert = models.FileField(
-        verbose_name=_("HIV Certificate"),
-    )
-    description = models.FileField(
-        verbose_name=_("Description"),
-    )
-    other = models.FileField(
-        verbose_name=_("Other"),
+    file = models.FileField(
+        default=None,
+        upload_to="documents",
+        verbose_name=_("Document File"),
     )
 
     created_at = models.DateTimeField(
@@ -437,7 +417,7 @@ class Document(models.Model):
     )
 
     def __str__(self):
-        return "Documents of" + str(self.student)
+        return str(self.student) + " - " + self.name
 
 
 class Residence_permit(models.Model):
@@ -505,6 +485,11 @@ class Order(models.Model):
     date_issued = models.DateField(
         verbose_name=_("Issue Date"),
     )
+    handed_over_date = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name=_("Handed Over Date"),
+    )
 
     created_at = models.DateTimeField(
         auto_now_add=True,
@@ -539,6 +524,11 @@ class Statement(models.Model):
     )
     date_issued = models.DateField(
         verbose_name=_("Issue Date"),
+    )
+    handed_over_date = models.DateField(
+        blank=True,
+        null=True,
+        verbose_name=_("Handed Over Date"),
     )
 
     created_at = models.DateTimeField(

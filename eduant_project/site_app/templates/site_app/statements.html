@@ -14,12 +14,68 @@
     <h3><a href="{% url "site_app:student" current_student.id %}">{% trans 'Student' %}: {{ current_student }}</a></h3>
     <h4>{% trans 'Statements' %}: </h4>
     
+    <center>
+        {% for statement in statements %}
 
-    {% for statement in statements %}
+        <table class="table_description">
+            <tr>
+                <td>
+                    <b>{% trans 'Statement Name' %}:</b>
+                </td>
+                <td>
+                    <span><b>{{ statement.name }}</b></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{% trans 'Issued By' %}:</b>
+                </td>
+                <td>
+                    <span><b>{{ statement.issued_by }}</b></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{% trans 'Submission To' %}:</b>
+                </td>
+                <td>
+                    <span><b>{{ statement.submission_to }}</b></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{% trans 'Issue Date' %}:</b>
+                </td>
+                <td>
+                    <span><b>{{ statement.date_issued }}</b></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>{% trans 'Handed Over Date' %}:</b>
+                </td>
+                <td>
+                    <span><b>{{ statement.handed_over_date }}</b></span>
+                </td>
+            </tr>
+        </table>
 
-    {{ statement }}
+        {% if statement.handed_over_date %}
+        <br/>
+        <br/>
+        {% else %}
+        <form method="post" action="{% url 'site_app:hand_over' statement.id %}">
+            {% csrf_token %}
+            <button class='button' type="submit">{% trans 'HAND OVER' %}</button>
+            <br/>
+            <br/>
+        </form>
+        {% endif %}
 
-    {% endfor %}
+        {% endfor %}
+
+        
+    </center>
 
 </div>
 

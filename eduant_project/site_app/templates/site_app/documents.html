@@ -15,11 +15,23 @@
     <h4>{% trans 'Documents' %}: </h4>
     
 
-    {% for doc in docs %}
-
-    {{ doc }}
-
-    {% endfor %}
+    <center>
+        <table class="table_description">
+            {% for doc in docs %}
+            <tr>
+                <td>
+                    <p><b>{{ doc.name }}:</b></p>
+                </td>
+                <td>
+                    <p>{{ doc.description }}</p>
+                </td>
+                <td>
+                    <a href="{{ doc.file.url }}"><p><b>{{ doc.file }}</b></p></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
 
 </div>
 

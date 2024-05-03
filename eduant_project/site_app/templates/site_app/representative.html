@@ -24,12 +24,16 @@
             <img class='avatar' src="/static/site_app/avatar_boy.png" alt="img">
             {% endif %}
             
-            <h4>{% trans 'Students' %}: </h4>
-            <ol>
-                {% for student in students %}
-                    <li><a href="{% url "site_app:student" student.id %}">{{ student }}</a></li>
-                {% endfor %}
-            </ol>
+            <div>
+                <br/>
+                
+                <h4>{% trans 'Students' %}: </h4>
+                <ol>
+                    {% for student in students %}
+                        <li><a href="{% url "site_app:student" student.id %}">{{ student }}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
 
             
         </div>

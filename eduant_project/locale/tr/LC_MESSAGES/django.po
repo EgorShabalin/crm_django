@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-03 11:53+0300\n"
+"POT-Creation-Date: 2024-05-03 15:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,6 +54,64 @@ msgstr ""
 msgid "Representative"
 msgstr "Temsilci türü"
 
+#: site_app/config.py:15
+msgid "School Graduation Certificate"
+msgstr ""
+
+#: site_app/config.py:16
+#, fuzzy
+#| msgid "Password"
+msgid "Passport"
+msgstr "Şifre"
+
+#: site_app/config.py:17
+msgid "Form"
+msgstr ""
+
+#: site_app/config.py:18
+msgid "Application"
+msgstr ""
+
+#: site_app/config.py:19
+msgid "Photo"
+msgstr ""
+
+#: site_app/config.py:20
+#, fuzzy
+#| msgid "Birth date"
+msgid "Birth Certificate"
+msgstr "Doğum Tarihi"
+
+#: site_app/config.py:21
+msgid "Exit Application"
+msgstr ""
+
+#: site_app/config.py:22
+#, fuzzy
+#| msgid "Residence Permit ID"
+msgid "Agreement For Residence Permit"
+msgstr "İkamet İzni Kimliği"
+
+#: site_app/config.py:23
+#, fuzzy
+#| msgid "Birth date"
+msgid "Medical Certificate"
+msgstr "Doğum Tarihi"
+
+#: site_app/config.py:24
+#, fuzzy
+#| msgid "Birth date"
+msgid "HIV Certificate"
+msgstr "Doğum Tarihi"
+
+#: site_app/config.py:25
+msgid "Description"
+msgstr ""
+
+#: site_app/config.py:26
+msgid "Other"
+msgstr ""
+
 #: site_app/forms.py:13 site_app/forms.py:44 site_app/forms.py:59
 #, fuzzy
 #| msgid "Email"
@@ -98,8 +156,8 @@ msgstr "Kurs adı"
 
 #: site_app/models.py:14 site_app/models.py:112 site_app/models.py:143
 #: site_app/models.py:171 site_app/models.py:286 site_app/models.py:347
-#: site_app/models.py:376 site_app/models.py:432 site_app/models.py:475
-#: site_app/models.py:511 site_app/models.py:546 site_app/models.py:573
+#: site_app/models.py:376 site_app/models.py:412 site_app/models.py:455
+#: site_app/models.py:496 site_app/models.py:536 site_app/models.py:563
 #, fuzzy
 #| msgid "Created time"
 msgid "Created Time"
@@ -107,8 +165,8 @@ msgstr "Oluşturulma zamanı"
 
 #: site_app/models.py:18 site_app/models.py:116 site_app/models.py:147
 #: site_app/models.py:175 site_app/models.py:290 site_app/models.py:351
-#: site_app/models.py:380 site_app/models.py:436 site_app/models.py:479
-#: site_app/models.py:515 site_app/models.py:550 site_app/models.py:577
+#: site_app/models.py:380 site_app/models.py:416 site_app/models.py:459
+#: site_app/models.py:500 site_app/models.py:540 site_app/models.py:567
 #, fuzzy
 #| msgid "Updated time"
 msgid "Updated Time"
@@ -257,9 +315,9 @@ msgid "Subject Name"
 msgstr "Ajan adı"
 
 #: site_app/models.py:158 site_app/models.py:186 site_app/models.py:218
-#: site_app/models.py:303 site_app/models.py:391 site_app/models.py:447
-#: site_app/models.py:490 site_app/models.py:526 site_app/models.py:561
-#: site_app/models.py:588 site_app/templates/site_app/___student.html:15
+#: site_app/models.py:303 site_app/models.py:391 site_app/models.py:427
+#: site_app/models.py:470 site_app/models.py:511 site_app/models.py:551
+#: site_app/models.py:578 site_app/templates/site_app/___student.html:15
 #: site_app/templates/site_app/applications.html:14
 #: site_app/templates/site_app/documents.html:14
 #: site_app/templates/site_app/grades.html:14
@@ -374,132 +432,95 @@ msgstr ""
 msgid "Payed"
 msgstr ""
 
-#: site_app/models.py:394
-msgid "School Graduation Certificate"
-msgstr ""
-
 #: site_app/models.py:397
 #, fuzzy
-#| msgid "Password"
-msgid "Passport"
-msgstr "Şifre"
+#| msgid "Course name"
+msgid "Document Name"
+msgstr "Kurs adı"
 
-#: site_app/models.py:400
-msgid "Form"
+#: site_app/models.py:402
+msgid "Document Description"
 msgstr ""
 
-#: site_app/models.py:403
-msgid "Application"
+#: site_app/models.py:407
+msgid "Document File"
 msgstr ""
 
-#: site_app/models.py:406
-msgid "Photo"
-msgstr ""
-
-#: site_app/models.py:409
-#, fuzzy
-#| msgid "Birth date"
-msgid "Birth Certificate"
-msgstr "Doğum Tarihi"
-
-#: site_app/models.py:412
-msgid "Exit Application"
-msgstr ""
-
-#: site_app/models.py:415
-#, fuzzy
-#| msgid "Residence Permit ID"
-msgid "Agreement For Residence Permit"
-msgstr "İkamet İzni Kimliği"
-
-#: site_app/models.py:418
-#, fuzzy
-#| msgid "Birth date"
-msgid "Medical Certificate"
-msgstr "Doğum Tarihi"
-
-#: site_app/models.py:421
-#, fuzzy
-#| msgid "Birth date"
-msgid "HIV Certificate"
-msgstr "Doğum Tarihi"
-
-#: site_app/models.py:424
-msgid "Description"
-msgstr ""
-
-#: site_app/models.py:427
-msgid "Other"
-msgstr ""
-
-#: site_app/models.py:450 site_app/templates/site_app/student.html:77
+#: site_app/models.py:430 site_app/templates/site_app/student.html:77
 msgid "Arrival Date"
 msgstr ""
 
-#: site_app/models.py:453 site_app/templates/site_app/student.html:85
+#: site_app/models.py:433 site_app/templates/site_app/student.html:85
 #, fuzzy
 #| msgid "Student"
 msgid "Student Visa"
 msgstr "Öğrenci"
 
-#: site_app/models.py:456 site_app/templates/site_app/student.html:93
+#: site_app/models.py:436 site_app/templates/site_app/student.html:93
 msgid "Registration Address"
 msgstr ""
 
-#: site_app/models.py:460
+#: site_app/models.py:440
 #, fuzzy
 #| msgid "Residence Permit ID"
 msgid "Residence Permit ID"
 msgstr "İkamet İzni Kimliği"
 
-#: site_app/models.py:463
+#: site_app/models.py:443
 #, fuzzy
 #| msgid "Residence Permit End Date"
 msgid "Residence Permit Issue Date"
 msgstr "İkamet İzni Bitiş Tarihi"
 
-#: site_app/models.py:466
+#: site_app/models.py:446
 #, fuzzy
 #| msgid "Residence Permit End Date"
 msgid "Residence Permit End Date"
 msgstr "İkamet İzni Bitiş Tarihi"
 
-#: site_app/models.py:470
+#: site_app/models.py:450
 #, fuzzy
 #| msgid "Residence Permit ID"
 msgid "Residence Permit Type"
 msgstr "İkamet İzni Kimliği"
 
-#: site_app/models.py:494 site_app/templates/site_app/orders.html:27
+#: site_app/models.py:474 site_app/templates/site_app/orders.html:27
 #, fuzzy
 #| msgid "Agent name"
 msgid "Subject Of Order"
 msgstr "Ajan adı"
 
-#: site_app/models.py:499 site_app/templates/site_app/orders.html:35
+#: site_app/models.py:479 site_app/templates/site_app/orders.html:35
 msgid "Order ID"
 msgstr ""
 
-#: site_app/models.py:503 site_app/models.py:534
+#: site_app/models.py:483 site_app/models.py:519
 #: site_app/templates/site_app/orders.html:43
+#: site_app/templates/site_app/statements.html:31
 msgid "Issued By"
 msgstr ""
 
-#: site_app/models.py:506 site_app/models.py:541 site_app/models.py:568
+#: site_app/models.py:486 site_app/models.py:526 site_app/models.py:558
 #: site_app/templates/site_app/orders.html:51
+#: site_app/templates/site_app/statements.html:47
 #: site_app/templates/site_app/student.html:61
 msgid "Issue Date"
 msgstr ""
 
-#: site_app/models.py:530
+#: site_app/models.py:491 site_app/models.py:531
+#: site_app/templates/site_app/statements.html:55
+msgid "Handed Over Date"
+msgstr ""
+
+#: site_app/models.py:515
 msgid "Name"
 msgstr ""
 
-#: site_app/models.py:538
+#: site_app/models.py:523 site_app/templates/site_app/statements.html:39
 msgid "Submission To"
 msgstr ""
 
-#: site_app/models.py:565
+#: site_app/models.py:555
 msgid "Subject Of Application"
 msgstr ""
 
@@ -836,6 +857,16 @@ msgstr "Üye olmak"
 msgid "Statements"
 msgstr ""
 
+#: site_app/templates/site_app/statements.html:23
+#, fuzzy
+#| msgid "Agent name"
+msgid "Statement Name"
+msgstr "Ajan adı"
+
+#: site_app/templates/site_app/statements.html:67
+msgid "HAND OVER"
+msgstr ""
+
 #: site_app/templates/site_app/student.html:17
 msgid "Sum of debt"
 msgstr ""
@@ -890,6 +921,14 @@ msgstr ""
 
 #: site_app/views.py:125
 msgid "No New Debts!"
+msgstr ""
+
+#: site_app/views.py:138
+msgid "The Document Has Been Handed Over Already!"
+msgstr ""
+
+#: site_app/views.py:143
+msgid "The Document Has Been Handed Over Now!"
 msgstr ""
 
 #~ msgid "Birth date"

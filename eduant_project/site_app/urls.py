@@ -33,4 +33,5 @@ urlpatterns = [
     path("internships/<int:pk>/", internships, name="internships"),
     path("check_debt/", check_debt, name="check_debt"),
     path("generate_pdf/<int:pk>/", generate_pdf, name="generate_pdf"),
+    path("hand_over/<int:pk>/", hand_over, name="hand_over"),
 ]

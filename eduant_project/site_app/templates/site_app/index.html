@@ -5,11 +5,18 @@
 {% block content %}
 
 <center>
+    <br/>
+    <br/>
+    <br/>
 
 {% if request.user.is_authenticated %}
 
     <h3>{% trans 'Welcome' %}, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.email }}{% endif %}!</h3>
 
+    <br/>
+    <br/>
+    <br/>
+    
     <a class='button' href="{% url "site_app:profile" user.id %}">{% trans 'PROFILE' %}</a>
 
     <a class='button' href="{% url "site_app:ag_grid" %}">CRM</a>
