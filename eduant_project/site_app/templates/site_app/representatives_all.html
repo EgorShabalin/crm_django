@@ -20,7 +20,7 @@
 </div>
 
 <!-- Toggle button to show/hide Select Columns section -->
-<button class='button' id="toggle-columns-btn" onclick="toggleColumnsSelection()">{% trans 'Select columns' %}</button>
+<button class='button' id="toggle-columns-btn" onclick="toggleColumnsSelection()">{% trans 'Select Columns' %}</button>
 
 <!-- Container for Select Columns section -->
 <div id="columns_selection" style="display: none;">
@@ -33,8 +33,8 @@
             </div>
         {% endfor %}
         <button class='button' onclick="applyColumnSelection()">{% trans 'Apply' %}</button>
-        <button class='button' onclick="toggleAllColumns(true)">{% trans 'Show all' %}</button>
-        <button class='button' onclick="toggleAllColumns(false)">{% trans 'Hide all' %}</button>
+        <button class='button' onclick="toggleAllColumns(true)">{% trans 'Show All' %}</button>
+        <button class='button' onclick="toggleAllColumns(false)">{% trans 'Hide All' %}</button>
     </div>
 </div>
 
@@ -149,10 +149,10 @@
         const toggleButton = document.getElementById('toggle-columns-btn');
         if (columnsSelection.style.display === 'none') {
             columnsSelection.style.display = 'flex';            
-            toggleButton.textContent = '{% trans 'Hide selector' %}';
+            toggleButton.textContent = '{% trans 'Hide Selector' %}';
         } else {
             columnsSelection.style.display = 'none';
-            toggleButton.textContent = '{% trans 'Select columns' %}';
+            toggleButton.textContent = '{% trans 'Select Columns' %}';
         }
     }
 

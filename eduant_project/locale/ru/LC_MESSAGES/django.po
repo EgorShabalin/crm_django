@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-03 00:42+0300\n"
+"POT-Creation-Date: 2024-05-03 11:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,69 +52,74 @@ msgstr "Мать"
 msgid "Representative"
 msgstr "Представитель"
 
-#: site_app/forms.py:13 site_app/forms.py:38 site_app/forms.py:53
+#: site_app/forms.py:13 site_app/forms.py:44 site_app/forms.py:59
 msgid "Your Email"
-msgstr "Электронная почта"
+msgstr "Электронная Почта"
 
-#: site_app/forms.py:16 site_app/forms.py:41
-msgid "Your Phone"
-msgstr "Телефон"
+#: site_app/forms.py:16 site_app/forms.py:38
+msgid "Your First name"
+msgstr "Ваше Имя"
 
-#: site_app/forms.py:19 site_app/forms.py:44 site_app/forms.py:56
-msgid "Your Password"
-msgstr "Пароль"
+#: site_app/forms.py:19 site_app/forms.py:41
+msgid "Your Last name"
+msgstr "Ваша Фамилия"
 
 #: site_app/forms.py:22 site_app/forms.py:47
+msgid "Your Phone"
+msgstr "Ваш Телефон"
+
+#: site_app/forms.py:25 site_app/forms.py:50 site_app/forms.py:62
+msgid "Your Password"
+msgstr "Ваш Пароль"
+
+#: site_app/forms.py:28 site_app/forms.py:53
 #: site_app/templates/site_app/edit_profile.html:113
-#: site_app/templates/site_app/signup.html:82
+#: site_app/templates/site_app/signup.html:112
 msgid "Repeat Password"
 msgstr "Повторите пароль"
 
-#: site_app/forms.py:32
-msgid "Your First name"
-msgstr "Имя"
-
-#: site_app/forms.py:35
-msgid "Your Last name"
-msgstr "Фамилия"
-
 #: site_app/models.py:9
-msgid "Course name"
-msgstr "Название курса"
+msgid "Course Name"
+msgstr "Название Курса"
 
 #: site_app/models.py:14 site_app/models.py:112 site_app/models.py:143
 #: site_app/models.py:171 site_app/models.py:286 site_app/models.py:347
 #: site_app/models.py:376 site_app/models.py:432 site_app/models.py:475
 #: site_app/models.py:511 site_app/models.py:546 site_app/models.py:573
-msgid "Created time"
-msgstr "Время создания"
+msgid "Created Time"
+msgstr "Время Создания"
 
 #: site_app/models.py:18 site_app/models.py:116 site_app/models.py:147
 #: site_app/models.py:175 site_app/models.py:290 site_app/models.py:351
 #: site_app/models.py:380 site_app/models.py:436 site_app/models.py:479
 #: site_app/models.py:515 site_app/models.py:550 site_app/models.py:577
-msgid "Updated time"
-msgstr "Время обновления"
+msgid "Updated Time"
+msgstr "Время Обновления"
 
 #: site_app/models.py:28 site_app/models.py:222
 #: site_app/templates/site_app/edit_profile.html:52
 #: site_app/templates/site_app/profile.html:39
-msgid "First name"
+#: site_app/templates/site_app/signup.html:52
+msgid "First Name"
 msgstr "Имя"
 
 #: site_app/models.py:32 site_app/models.py:226
 #: site_app/templates/site_app/edit_profile.html:67
 #: site_app/templates/site_app/profile.html:54
-msgid "Last name"
+#: site_app/templates/site_app/signup.html:67
+msgid "Last Name"
 msgstr "Фамилия"
 
 #: site_app/models.py:38 site_app/models.py:232
-msgid "Middle name"
+msgid "Middle Name"
 msgstr "Отчество"
 
 #: site_app/models.py:41 site_app/models.py:235
-msgid "Birth date"
-msgstr "Дата рождения"
+#: site_app/templates/site_app/payments.html:121
+#: site_app/templates/site_app/representative.html:42
+#: site_app/templates/site_app/student.html:133
+msgid "Birth Date"
+msgstr "Дата Рождения"
 
 #: site_app/models.py:47 site_app/models.py:138
 #: site_app/templates/site_app/course.html:14
@@ -123,27 +128,30 @@ msgid "Course"
 msgstr "Курс"
 
 #: site_app/models.py:52
-msgid "Form of study"
-msgstr "Форма обучения"
+msgid "Form Of study"
+msgstr "Форма Обучения"
 
-#: site_app/models.py:56
-msgid "Start date"
-msgstr "Дата начала"
+#: site_app/models.py:56 site_app/models.py:203
+#: site_app/templates/site_app/student.html:157
+msgid "Start Date"
+msgstr "Дата Начала"
 
-#: site_app/models.py:61
-msgid "End date"
-msgstr "Дата окончания"
+#: site_app/models.py:61 site_app/models.py:208
+#: site_app/templates/site_app/student.html:69
+#: site_app/templates/site_app/student.html:165
+msgid "End Date"
+msgstr "Дата Окончания"
 
 #: site_app/models.py:65 site_app/models.py:239
 #: site_app/templates/site_app/payments.html:129
 #: site_app/templates/site_app/representative.html:50
 #: site_app/templates/site_app/student.html:173
 msgid "Personal ID"
-msgstr "Номер паспорта"
+msgstr "Номер Паспорта"
 
 #: site_app/models.py:69 site_app/models.py:243
 msgid "Personal ID details"
-msgstr "Кем и когда выдан паспорт"
+msgstr "Кем И Когда Выдан Паспорт"
 
 #: site_app/models.py:73 site_app/models.py:247
 #: site_app/templates/site_app/payments.html:145
@@ -177,21 +185,28 @@ msgstr "Язык"
 #: site_app/templates/site_app/edit_profile.html:82
 #: site_app/templates/site_app/payments.html:185
 #: site_app/templates/site_app/representative.html:106
-#: site_app/templates/site_app/signup.html:52
+#: site_app/templates/site_app/signup.html:82
 #: site_app/templates/site_app/student.html:221
 msgid "Phone"
 msgstr "Телефон"
 
 #: site_app/models.py:93 site_app/models.py:272
 #: site_app/templates/site_app/edit_profile.html:37
+#: site_app/templates/site_app/login.html:22
+#: site_app/templates/site_app/login.html:28
 #: site_app/templates/site_app/payments.html:193
+#: site_app/templates/site_app/profile.html:24
 #: site_app/templates/site_app/representative.html:114
+#: site_app/templates/site_app/signup.html:37
 #: site_app/templates/site_app/student.html:229
 msgid "Email"
-msgstr "Электронная почта"
+msgstr "Электронная Почта"
 
 #: site_app/models.py:99 site_app/models.py:278
-msgid "Other contact"
+#: site_app/templates/site_app/payments.html:201
+#: site_app/templates/site_app/representative.html:122
+#: site_app/templates/site_app/student.html:237
+msgid "Other Contact"
 msgstr "Другой контакт"
 
 #: site_app/models.py:103
@@ -206,8 +221,8 @@ msgid "Active"
 msgstr "Активен"
 
 #: site_app/models.py:132
-msgid "Subject name"
-msgstr "Название предмета"
+msgid "Subject Name"
+msgstr "Название Предмета"
 
 #: site_app/models.py:158 site_app/models.py:186 site_app/models.py:218
 #: site_app/models.py:303 site_app/models.py:391 site_app/models.py:447
@@ -234,8 +249,8 @@ msgid "Grade"
 msgstr "Оценка"
 
 #: site_app/models.py:190
-msgid "Internship name"
-msgstr "Название стажировки"
+msgid "Internship Name"
+msgstr "Название Стажировки"
 
 #: site_app/models.py:194
 msgid "Location"
@@ -245,18 +260,10 @@ msgstr "Локация"
 msgid "Result"
 msgstr "Результат"
 
-#: site_app/models.py:203 site_app/templates/site_app/student.html:157
-msgid "Start Date"
-msgstr "Дата начала"
-
-#: site_app/models.py:208 site_app/templates/site_app/student.html:69
-#: site_app/templates/site_app/student.html:165
-msgid "End Date"
-msgstr "Дата окончания"
-
-#: site_app/models.py:264 site_app/templates/site_app/representative.html:98
-msgid "Representative type"
-msgstr "Тип представителя"
+#: site_app/models.py:264 site_app/templates/site_app/payments.html:177
+#: site_app/templates/site_app/representative.html:98
+msgid "Representative Type"
+msgstr "Тип Представителя"
 
 #: site_app/models.py:281 site_app/templates/site_app/payments.html:99
 #: site_app/templates/site_app/payments.html:113
@@ -267,23 +274,26 @@ msgstr "Тип представителя"
 msgid "Contractor"
 msgstr "Контрактор"
 
-#: site_app/models.py:306
-msgid "Contract date"
-msgstr "Дата договора"
+#: site_app/models.py:306 site_app/templates/site_app/representative.html:172
+#: site_app/templates/site_app/student.html:300
+msgid "Contract Date"
+msgstr "Дата Договора"
 
 #: site_app/models.py:310 site_app/templates/site_app/representative.html:164
 #: site_app/templates/site_app/student.html:292
 msgid "Contract ID"
-msgstr "Номер договора"
+msgstr "Номер Договора"
 
 #: site_app/models.py:313 site_app/templates/site_app/payments.html:25
 #: site_app/templates/site_app/representative.html:180
 #: site_app/templates/site_app/student.html:308
 msgid "Contract Price"
-msgstr "Цена по договору"
+msgstr "Цена По Договору"
 
-#: site_app/models.py:318
-msgid "Final settlement date"
+#: site_app/models.py:318 site_app/templates/site_app/payments.html:33
+#: site_app/templates/site_app/representative.html:188
+#: site_app/templates/site_app/student.html:316
+msgid "Final Settlement Date"
 msgstr "Дата Окончательного Рассчета"
 
 #: site_app/models.py:321 site_app/templates/site_app/payments.html:41
@@ -312,16 +322,16 @@ msgstr "Контракт"
 msgid "Amount"
 msgstr "Сумма"
 
-#: site_app/models.py:368
-msgid "Pay date"
-msgstr "Дата платежа"
+#: site_app/models.py:368 site_app/templates/site_app/payments.html:242
+msgid "Pay Date"
+msgstr "Дата Платежа"
 
 #: site_app/models.py:371 site_app/templates/site_app/payments.html:250
 msgid "Payed"
 msgstr "Оплачено"
 
 #: site_app/models.py:394
-msgid "School leaving certificate"
+msgid "School Graduation Certificate"
 msgstr "Аттестат"
 
 #: site_app/models.py:397
@@ -341,24 +351,24 @@ msgid "Photo"
 msgstr "Фото"
 
 #: site_app/models.py:409
-msgid "Birth certificate"
-msgstr "Свидетельство о рождении"
+msgid "Birth Certificate"
+msgstr "Свидетельство О Рождении"
 
 #: site_app/models.py:412
-msgid "Exit application"
-msgstr "Заявление на самостоятельный выход"
+msgid "Exit Application"
+msgstr "Заявление На Самостоятельный Выход"
 
 #: site_app/models.py:415
-msgid "Agreement for residence permit"
-msgstr "Согласие на ВНЖ"
+msgid "Agreement For Residence Permit"
+msgstr "Согласие На ВНЖ"
 
 #: site_app/models.py:418
-msgid "Medical certificate"
-msgstr "Медицинская справка"
+msgid "Medical Certificate"
+msgstr "Медицинская Справка"
 
 #: site_app/models.py:421
-msgid "HIV certificate"
-msgstr "ВИЧ справка"
+msgid "HIV Certificate"
+msgstr "ВИЧ Справка"
 
 #: site_app/models.py:424
 msgid "Description"
@@ -370,34 +380,34 @@ msgstr "Другое"
 
 #: site_app/models.py:450 site_app/templates/site_app/student.html:77
 msgid "Arrival Date"
-msgstr "Дата прибытия"
+msgstr "Дата Прибытия"
 
-#: site_app/models.py:453
-msgid "Student visa"
-msgstr "Студенческая виза"
+#: site_app/models.py:453 site_app/templates/site_app/student.html:85
+msgid "Student Visa"
+msgstr "Студенческая Виза"
 
-#: site_app/models.py:456
-msgid "Registration address"
-msgstr "Адрес регистрации"
+#: site_app/models.py:456 site_app/templates/site_app/student.html:93
+msgid "Registration Address"
+msgstr "Адрес Регистрации"
 
 #: site_app/models.py:460
-msgid "Residence permit ID"
+msgid "Residence Permit ID"
 msgstr "ВНЖ Номер"
 
 #: site_app/models.py:463
-msgid "Residence permit issue date"
-msgstr "ВНЖ Дата выдачи"
+msgid "Residence Permit Issue Date"
+msgstr "ВНЖ Дата Выдачи"
 
 #: site_app/models.py:466
-msgid "Residence permit end date"
-msgstr "ВНЖ Дата истечения"
+msgid "Residence Permit End Date"
+msgstr "ВНЖ Дата Истечения"
 
 #: site_app/models.py:470
-msgid "Residence permit type"
+msgid "Residence Permit Type"
 msgstr "Тип ВНЖ"
 
-#: site_app/models.py:494
-msgid "Subject of Order"
+#: site_app/models.py:494 site_app/templates/site_app/orders.html:27
+msgid "Subject Of Order"
 msgstr "Предмет Приказа"
 
 #: site_app/models.py:499 site_app/templates/site_app/orders.html:35
@@ -407,13 +417,13 @@ msgstr "Номер Приказа"
 #: site_app/models.py:503 site_app/models.py:534
 #: site_app/templates/site_app/orders.html:43
 msgid "Issued By"
-msgstr "Выдан кем"
+msgstr "Выдан Кем"
 
 #: site_app/models.py:506 site_app/models.py:541 site_app/models.py:568
 #: site_app/templates/site_app/orders.html:51
 #: site_app/templates/site_app/student.html:61
 msgid "Issue Date"
-msgstr "Дата выдачи"
+msgstr "Дата Выдачи"
 
 #: site_app/models.py:530
 msgid "Name"
@@ -421,10 +431,10 @@ msgstr "Название"
 
 #: site_app/models.py:538
 msgid "Submission To"
-msgstr "Для предоставления в"
+msgstr "Для Предоставления В"
 
 #: site_app/models.py:565
-msgid "Subject of Application"
+msgid "Subject Of Application"
 msgstr "Предмет Заявления"
 
 #: site_app/templates/site_app/___student.html:10
@@ -441,16 +451,8 @@ msgstr "Представители"
 
 #: site_app/templates/site_app/___student.html:21
 #: site_app/templates/site_app/___student.html:315
-#: site_app/templates/site_app/ag_grid.html:26
-#: site_app/templates/site_app/ag_grid.html:156
-#: site_app/templates/site_app/contracts.html:22
-#: site_app/templates/site_app/contracts.html:152
-#: site_app/templates/site_app/representatives.html:20
-#: site_app/templates/site_app/representatives.html:152
-#: site_app/templates/site_app/representatives_all.html:23
-#: site_app/templates/site_app/representatives_all.html:155
 msgid "Select columns"
-msgstr "Выбор столбцов"
+msgstr "Выбор Столбцов"
 
 #: site_app/templates/site_app/___student.html:33
 #: site_app/templates/site_app/ag_grid.html:38
@@ -461,20 +463,12 @@ msgid "Apply"
 msgstr "Применить"
 
 #: site_app/templates/site_app/___student.html:34
-#: site_app/templates/site_app/ag_grid.html:39
-#: site_app/templates/site_app/contracts.html:35
-#: site_app/templates/site_app/representatives.html:33
-#: site_app/templates/site_app/representatives_all.html:36
 msgid "Show all"
-msgstr "Показать все"
+msgstr "Показать Все"
 
 #: site_app/templates/site_app/___student.html:35
-#: site_app/templates/site_app/ag_grid.html:40
-#: site_app/templates/site_app/contracts.html:36
-#: site_app/templates/site_app/representatives.html:34
-#: site_app/templates/site_app/representatives_all.html:37
 msgid "Hide all"
-msgstr "Скрыть все"
+msgstr "Скрыть Все"
 
 #: site_app/templates/site_app/___student.html:45
 #: site_app/templates/site_app/contracts.html:17
@@ -490,12 +484,8 @@ msgid "Grades"
 msgstr "Оценки"
 
 #: site_app/templates/site_app/___student.html:312
-#: site_app/templates/site_app/ag_grid.html:153
-#: site_app/templates/site_app/contracts.html:149
-#: site_app/templates/site_app/representatives.html:149
-#: site_app/templates/site_app/representatives_all.html:152
 msgid "Hide selector"
-msgstr "Скрыть выбор столбцов"
+msgstr "Скрыть Выбор Столбцов"
 
 #: site_app/templates/site_app/ag_grid.html:11
 #: site_app/templates/site_app/contracts.html:11
@@ -533,6 +523,38 @@ msgstr "ПРОВЕРИТЬ ДОЛГИ"
 #: site_app/templates/site_app/representative.html:27
 msgid "Students"
 msgstr "Студенты"
+
+#: site_app/templates/site_app/ag_grid.html:26
+#: site_app/templates/site_app/ag_grid.html:156
+#: site_app/templates/site_app/contracts.html:22
+#: site_app/templates/site_app/contracts.html:152
+#: site_app/templates/site_app/representatives.html:20
+#: site_app/templates/site_app/representatives.html:152
+#: site_app/templates/site_app/representatives_all.html:23
+#: site_app/templates/site_app/representatives_all.html:155
+msgid "Select Columns"
+msgstr "Выбор Столбцов"
+
+#: site_app/templates/site_app/ag_grid.html:39
+#: site_app/templates/site_app/contracts.html:35
+#: site_app/templates/site_app/representatives.html:33
+#: site_app/templates/site_app/representatives_all.html:36
+msgid "Show All"
+msgstr "Показать Все"
+
+#: site_app/templates/site_app/ag_grid.html:40
+#: site_app/templates/site_app/contracts.html:36
+#: site_app/templates/site_app/representatives.html:34
+#: site_app/templates/site_app/representatives_all.html:37
+msgid "Hide All"
+msgstr "Скрыть Все"
+
+#: site_app/templates/site_app/ag_grid.html:153
+#: site_app/templates/site_app/contracts.html:149
+#: site_app/templates/site_app/representatives.html:149
+#: site_app/templates/site_app/representatives_all.html:152
+msgid "Hide Selector"
+msgstr "Скрыть Выбор Столбцов"
 
 #: site_app/templates/site_app/applications.html:10
 #: site_app/templates/site_app/course.html:10
@@ -577,7 +599,7 @@ msgstr "РЕДАКТИРОВАТЬ ПРОФИЛЬ"
 #: site_app/templates/site_app/edit_profile.html:23
 #: site_app/templates/site_app/signup.html:23
 msgid "Your password can’t be too similar to your other personal information"
-msgstr "Пароль не может быть похож на остальную пресональную информацию"
+msgstr "Пароль не может быть похож на остальную персональную информацию"
 
 #: site_app/templates/site_app/edit_profile.html:24
 #: site_app/templates/site_app/signup.html:24
@@ -595,26 +617,26 @@ msgid "Your password can’t be entirely numeric"
 msgstr "Пароль не может содержать только цифры"
 
 #: site_app/templates/site_app/edit_profile.html:98
-#: site_app/templates/site_app/login.html:37
-#: site_app/templates/site_app/signup.html:67
+#: site_app/templates/site_app/login.html:36
+#: site_app/templates/site_app/signup.html:97
 msgid "Password"
 msgstr "Пароль"
 
 #: site_app/templates/site_app/edit_profile.html:141
-#: site_app/templates/site_app/signup.html:110
+#: site_app/templates/site_app/signup.html:140
 msgid "SUBMIT"
 msgstr "СОХРАНИТЬ"
 
 #: site_app/templates/site_app/index.html:11
 msgid "Welcome"
-msgstr "Добро пожаловать"
+msgstr "Добро Пожаловать"
 
 #: site_app/templates/site_app/index.html:13
 msgid "PROFILE"
 msgstr "ПРОФИЛЬ"
 
 #: site_app/templates/site_app/index.html:19
-#: site_app/templates/site_app/login.html:65
+#: site_app/templates/site_app/login.html:64
 msgid "LOG IN"
 msgstr "ВХОД"
 
@@ -628,11 +650,11 @@ msgid "Internships"
 msgstr "Стажировки"
 
 #: site_app/templates/site_app/login.html:11
-msgid "Log in"
+msgid "Log In"
 msgstr "Вход"
 
 #: site_app/templates/site_app/orders.html:10
-msgid "Please wait for the PDF file to be generated..."
+msgid "Please Wait For The PDF File To Be Generated..."
 msgstr "Пожалуйста подождите генерации документа..."
 
 #: site_app/templates/site_app/orders.html:20
@@ -640,29 +662,19 @@ msgstr "Пожалуйста подождите генерации докуме�
 msgid "Orders"
 msgstr "Приказы"
 
-#: site_app/templates/site_app/orders.html:27
-msgid "Subject of order"
-msgstr "Предмет Приказа"
-
 #: site_app/templates/site_app/orders.html:59
 msgid "Download PDF"
 msgstr "Скачать PDF"
 
 #: site_app/templates/site_app/payments.html:14
-msgid "from"
-msgstr "от"
-
-#: site_app/templates/site_app/payments.html:33
-#: site_app/templates/site_app/representative.html:188
-#: site_app/templates/site_app/student.html:316
-msgid "Final Settlement Date"
-msgstr "Дата Окончательного Рассчета"
+msgid "From"
+msgstr "От"
 
 #: site_app/templates/site_app/payments.html:66
 #: site_app/templates/site_app/representative.html:228
 #: site_app/templates/site_app/student.html:356
-msgid "Students by contract"
-msgstr "Студенты по контракту"
+msgid "Students By Contract"
+msgstr "Студенты По Контракту"
 
 #: site_app/templates/site_app/payments.html:80
 #: site_app/templates/site_app/payments.html:210
@@ -673,7 +685,7 @@ msgstr "Студенты по контракту"
 #: site_app/templates/site_app/student.html:253
 #: site_app/templates/site_app/student.html:378
 msgid "Time Created"
-msgstr "Время создания"
+msgstr "Время Создания"
 
 #: site_app/templates/site_app/payments.html:88
 #: site_app/templates/site_app/payments.html:218
@@ -684,49 +696,29 @@ msgstr "Время создания"
 #: site_app/templates/site_app/student.html:261
 #: site_app/templates/site_app/student.html:386
 msgid "Time Updated"
-msgstr "Время обновления"
-
-#: site_app/templates/site_app/payments.html:121
-#: site_app/templates/site_app/representative.html:42
-#: site_app/templates/site_app/student.html:133
-msgid "Birth Date"
-msgstr "Дата рождения"
+msgstr "Время Обновления"
 
 #: site_app/templates/site_app/payments.html:137
 #: site_app/templates/site_app/representative.html:58
 #: site_app/templates/site_app/student.html:181
 msgid "Personal ID Details"
-msgstr "Кем и когда выдан"
-
-#: site_app/templates/site_app/payments.html:177
-msgid "Representative Type"
-msgstr "Тип представителя"
-
-#: site_app/templates/site_app/payments.html:201
-#: site_app/templates/site_app/representative.html:122
-#: site_app/templates/site_app/student.html:237
-msgid "Other Contact"
-msgstr "Другой контакт"
+msgstr "Кем И Когда Выдан"
 
 #: site_app/templates/site_app/payments.html:229
 msgid "Payments"
 msgstr "Платежи"
 
 #: site_app/templates/site_app/payments.html:234
-msgid "Payment amount"
-msgstr "Сумма платежа"
-
-#: site_app/templates/site_app/payments.html:242
-msgid "Pay Date"
-msgstr "Дата Платежа"
+msgid "Payment Amount"
+msgstr "Сумма Платежа"
 
 #: site_app/templates/site_app/profile.html:17
 msgid "MY PROFILE"
 msgstr "МОЙ ПРОФИЛЬ"
 
 #: site_app/templates/site_app/profile.html:69
-msgid "Phone number"
-msgstr "Номер телефона"
+msgid "Phone Number"
+msgstr "Номер Телефона"
 
 #: site_app/templates/site_app/profile.html:85
 msgid "EDIT MY PROFILE"
@@ -740,11 +732,6 @@ msgstr "ВЫХОД"
 #: site_app/templates/site_app/student.html:129
 msgid "Summary"
 msgstr "Характеристика"
-
-#: site_app/templates/site_app/representative.html:172
-#: site_app/templates/site_app/student.html:300
-msgid "Contract Date"
-msgstr "Дата договора"
 
 #: site_app/templates/site_app/signup.html:11
 msgid "Sign up"
@@ -771,37 +758,80 @@ msgstr "ВНЖ"
 msgid "ID"
 msgstr "Номер"
 
-#: site_app/templates/site_app/student.html:85
-msgid "Student Visa"
-msgstr "Студенческая виза"
-
-#: site_app/templates/site_app/student.html:93
-msgid "Registration Address"
-msgstr "Адрес регистрации"
-
 #: site_app/templates/site_app/student.html:102
 msgid "Type"
 msgstr "Тип"
 
 #: site_app/templates/site_app/student.html:149
-msgid "Form of Study"
-msgstr "Форма обучения"
+msgid "Form Of Study"
+msgstr "Форма Обучения"
 
-#: site_app/views.py:31
-msgid "You have been Signed Up!"
-msgstr "Вы были Зарегистрированы!"
+#: site_app/views.py:30
+msgid "You Have Been Logged In!"
+msgstr "Вы Выполнили Вход!"
 
-#: site_app/views.py:60
-msgid "Profile has been updated!"
-msgstr "Изменения в Профиле были Сохранены!"
+#: site_app/views.py:34
+msgid "There Was An Error Logging In, Please Try Again..."
+msgstr "Ошибка! Попробуйте Еще Раз!"
 
-#: site_app/views.py:94
-msgid "There are New Debts!"
+#: site_app/views.py:44
+msgid "You Have Been Logged Out..."
+msgstr "Вы Выполнили Выход..."
+
+#: site_app/views.py:54
+msgid "You Have Been Signed Up!"
+msgstr "Вы Были Зарегистрированы!"
+
+#: site_app/views.py:83
+msgid "Profile Has Been Updated!"
+msgstr "Изменения В Профиле Были Сохранены!"
+
+#: site_app/views.py:117
+msgid "There Are New Debts!"
 msgstr "Есть Новые Долги!"
 
-#: site_app/views.py:102
-msgid "No new Debts!"
+#: site_app/views.py:125
+msgid "No New Debts!"
 msgstr "Нет Новых Долгов!"
+
+#~ msgid "Birth date"
+#~ msgstr "Дата рождения"
+
+#~ msgid "Start date"
+#~ msgstr "Дата начала"
+
+#~ msgid "End date"
+#~ msgstr "Дата окончания"
+
+#~ msgid "Other contact"
+#~ msgstr "Другой контакт"
+
+#~ msgid "Representative type"
+#~ msgstr "Тип представителя"
+
+#~ msgid "Contract date"
+#~ msgstr "Дата договора"
+
+#~ msgid "Final settlement date"
+#~ msgstr "Дата Окончательного Рассчета"
+
+#~ msgid "Pay date"
+#~ msgstr "Дата платежа"
+
+#~ msgid "Student visa"
+#~ msgstr "Студенческая виза"
+
+#~ msgid "Registration address"
+#~ msgstr "Адрес регистрации"
+
+#~ msgid "Subject of order"
+#~ msgstr "Предмет Приказа"
+
+#~ msgid "from"
+#~ msgstr "от"
+
+#~ msgid "Something Went Wrong! Try One More Time!"
+#~ msgstr "Ошибка! Попробуйте Еще Раз!"
 
 #~ msgid "! DEBT !"
 #~ msgstr "! ДОЛГ !"

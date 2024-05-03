@@ -6,16 +6,16 @@ from django.utils.translation import gettext_lazy as _
 class Course(models.Model):
     name = models.CharField(
         max_length=255,
-        verbose_name=_("Course name"),
+        verbose_name=_("Course Name"),
     )
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -25,20 +25,20 @@ class Course(models.Model):
 class Student(models.Model):
     first_name = models.CharField(
         max_length=255,
-        verbose_name=_("First name"),
+        verbose_name=_("First Name"),
     )
     last_name = models.CharField(
         max_length=255,
-        verbose_name=_("Last name"),
+        verbose_name=_("Last Name"),
     )
     middle_name = models.CharField(
         max_length=255,
         blank=True,
         null=True,
-        verbose_name=_("Middle name"),
+        verbose_name=_("Middle Name"),
     )
     birth_date = models.DateField(
-        verbose_name=_("Birth date"),
+        verbose_name=_("Birth Date"),
     )
     course = models.ForeignKey(
         Course,
@@ -49,16 +49,16 @@ class Student(models.Model):
     form_of_study = models.CharField(
         max_length=255,
         choices=FORM_OF_STUDY,
-        verbose_name=_("Form of study"),
+        verbose_name=_("Form Of study"),
     )
 
     start_date = models.DateField(
-        verbose_name=_("Start date"),
+        verbose_name=_("Start Date"),
     )
     end_date = models.DateField(
         blank=True,
         null=True,
-        verbose_name=_("End date"),
+        verbose_name=_("End Date"),
     )
     personal_id = models.CharField(
         max_length=255,
@@ -96,7 +96,7 @@ class Student(models.Model):
         max_length=255,
         blank=True,
         null=True,
-        verbose_name=_("Other contact"),
+        verbose_name=_("Other Contact"),
     )
     debtor = models.BooleanField(
         default=False,
@@ -109,11 +109,11 @@ class Student(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -129,7 +129,7 @@ class Student(models.Model):
 class Subject(models.Model):
     name = models.CharField(
         max_length=255,
-        verbose_name=_("Subject name"),
+        verbose_name=_("Subject Name"),
     )
     course = models.ForeignKey(
         Course,
@@ -140,11 +140,11 @@ class Subject(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -168,11 +168,11 @@ class Grade(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -187,7 +187,7 @@ class Internship(models.Model):
     )
     name = models.CharField(
         max_length=255,
-        verbose_name=_("Internship name"),
+        verbose_name=_("Internship Name"),
     )
     location = models.CharField(
         max_length=255,
@@ -219,20 +219,20 @@ class Representative(models.Model):
     )
     first_name = models.CharField(
         max_length=255,
-        verbose_name=_("First name"),
+        verbose_name=_("First Name"),
     )
     last_name = models.CharField(
         max_length=255,
-        verbose_name=_("Last name"),
+        verbose_name=_("Last Name"),
     )
     middle_name = models.CharField(
         max_length=255,
         blank=True,
         null=True,
-        verbose_name=_("Middle name"),
+        verbose_name=_("Middle Name"),
     )
     birth_date = models.DateField(
-        verbose_name=_("Birth date"),
+        verbose_name=_("Birth Date"),
     )
     personal_id = models.CharField(
         max_length=255,
@@ -261,7 +261,7 @@ class Representative(models.Model):
     representative_type = models.CharField(
         choices=REPRESENTATIVES,
         max_length=255,
-        verbose_name=_("Representative type"),
+        verbose_name=_("Representative Type"),
     )
     phone = models.CharField(
         max_length=255,
@@ -275,7 +275,7 @@ class Representative(models.Model):
         max_length=255,
         blank=True,
         null=True,
-        verbose_name=_("Other contact"),
+        verbose_name=_("Other Contact"),
     )
     contractor = models.BooleanField(
         verbose_name=_("Contractor"),
@@ -283,11 +283,11 @@ class Representative(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -303,7 +303,7 @@ class Contract(models.Model):
         verbose_name=_("Student"),
     )
     contract_date = models.DateField(
-        verbose_name=_("Contract date"),
+        verbose_name=_("Contract Date"),
     )
     contract_id = models.CharField(
         max_length=255,
@@ -315,7 +315,7 @@ class Contract(models.Model):
     final_settlement_date = models.DateField(
         blank=True,
         null=True,
-        verbose_name=_("Final settlement date"),
+        verbose_name=_("Final Settlement Date"),
     )
     installment_plan = models.BooleanField(
         verbose_name=_("Installment Plan"),
@@ -344,11 +344,11 @@ class Contract(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -365,7 +365,7 @@ class Payment(models.Model):
         verbose_name=_("Amount"),
     )
     pay_date = models.DateField(
-        verbose_name=_("Pay date"),
+        verbose_name=_("Pay Date"),
     )
     payed = models.BooleanField(
         verbose_name=_("Payed"),
@@ -373,11 +373,11 @@ class Payment(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -391,7 +391,7 @@ class Document(models.Model):
         verbose_name=_("Student"),
     )
     school_leaving_certificate = models.FileField(
-        verbose_name=_("School leaving certificate"),
+        verbose_name=_("School Graduation Certificate"),
     )
     passport = models.FileField(
         verbose_name=_("Passport"),
@@ -406,19 +406,19 @@ class Document(models.Model):
         verbose_name=_("Photo"),
     )
     birth_cert = models.FileField(
-        verbose_name=_("Birth certificate"),
+        verbose_name=_("Birth Certificate"),
     )
     exit_application = models.FileField(
-        verbose_name=_("Exit application"),
+        verbose_name=_("Exit Application"),
     )
     agreement_for_residence_permit = models.FileField(
-        verbose_name=_("Agreement for residence permit"),
+        verbose_name=_("Agreement For Residence Permit"),
     )
     medical_cert = models.FileField(
-        verbose_name=_("Medical certificate"),
+        verbose_name=_("Medical Certificate"),
     )
     hiv_cert = models.FileField(
-        verbose_name=_("HIV certificate"),
+        verbose_name=_("HIV Certificate"),
     )
     description = models.FileField(
         verbose_name=_("Description"),
@@ -429,11 +429,11 @@ class Document(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -450,33 +450,33 @@ class Residence_permit(models.Model):
         verbose_name=_("Arrival Date"),
     )
     student_visa = models.BooleanField(
-        verbose_name=_("Student visa"),
+        verbose_name=_("Student Visa"),
     )
     registration_address = models.CharField(
-        max_length=255, verbose_name=_("Registration address")
+        max_length=255, verbose_name=_("Registration Address")
     )
     residence_permit_id = models.CharField(
         max_length=255,
-        verbose_name=_("Residence permit ID"),
+        verbose_name=_("Residence Permit ID"),
     )
     residence_permit_issue_date = models.DateField(
-        verbose_name=_("Residence permit issue date"),
+        verbose_name=_("Residence Permit Issue Date"),
     )
     residence_permit_end_date = models.DateField(
-        verbose_name=_("Residence permit end date"),
+        verbose_name=_("Residence Permit End Date"),
     )
     residence_permit_type = models.CharField(
         max_length=255,
-        verbose_name=_("Residence permit type"),
+        verbose_name=_("Residence Permit Type"),
     )
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -491,7 +491,7 @@ class Order(models.Model):
     )
     subject = models.CharField(
         max_length=255,
-        verbose_name=_("Subject of Order"),
+        verbose_name=_("Subject Of Order"),
     )
     order_id = models.CharField(
         max_length=255,
@@ -508,11 +508,11 @@ class Order(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -543,11 +543,11 @@ class Statement(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):
@@ -562,7 +562,7 @@ class Application(models.Model):
     )
     subject = models.CharField(
         max_length=255,
-        verbose_name=_("Subject of Application"),
+        verbose_name=_("Subject Of Application"),
     )
     date_issued = models.DateField(
         verbose_name=_("Issue Date"),
@@ -570,11 +570,11 @@ class Application(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_("Created time"),
+        verbose_name=_("Created Time"),
     )
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_("Updated time"),
+        verbose_name=_("Updated Time"),
     )
 
     def __str__(self):

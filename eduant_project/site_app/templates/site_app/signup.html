@@ -34,13 +34,43 @@
                 <tr>
                     <td>
 
-                        <label for="id_email">Email:</label>
+                        <label for="id_email">{% trans "Email" %}:</label>
 
                     </td>
 
                     <td>
 
                         {{ form.email }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="id_email">{% trans "First Name" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.first_name }}
+
+                    </td>
+                
+                </tr>
+
+                <tr>
+                    <td>
+
+                        <label for="id_email">{% trans "Last Name" %}:</label>
+
+                    </td>
+
+                    <td>
+
+                        {{ form.last_name }}
 
                     </td>
                 

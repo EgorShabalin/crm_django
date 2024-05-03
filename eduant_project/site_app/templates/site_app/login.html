@@ -8,9 +8,9 @@
 
     <center>
 
-        <h2>{% trans 'Log in' %}</h2>
+        <h2>{% trans 'Log In' %}</h2>
 
-        <form method='post' action='.'>
+        <form method='post' action="{% url 'site_app:login' %}">
 
             {% csrf_token %}
 
@@ -19,28 +19,27 @@
                 <tr>
                     <td>
 
-                        <label for="id_username">Email:</label>
+                        <label for="id_username">{% trans 'Email' %}:</label>
 
                     </td>
 
                     <td>
 
-                        {{ form.username }}
+                        <input type="text"  name="username", placeholder="{% trans 'Email' %}" required>
 
                     </td>
                 
                 </tr>
-
                 <tr>
                     <td>
 
-                        <label for="id_password1">{% trans 'Password' %}:</label>
+                        <label for="id_username">{% trans 'Password' %}:</label>
 
                     </td>
 
                     <td>
 
-                        {{ form.password }}
+                        <input type="password"  name="password", placeholder="Password" autocomplete="off" required>
 
                     </td>
                 
@@ -62,7 +61,7 @@
 
             {% endif %}            
 
-            <button class="button">{% trans 'LOG IN' %}</button>
+            <button class="button" type="submit">{% trans 'LOG IN' %}</button>
 
         </form>
 

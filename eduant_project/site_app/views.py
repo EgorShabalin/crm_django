@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -15,11 +16,33 @@ from xhtml2pdf import pisa
 
 
 def index(request):
-    return render(
-        request,
-        "site_app/index.html",
-        {},
-    )
+    return render(request, "site_app/index.html", {})
+
+
+def login_user(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, _("You Have Been Logged In!"))
+            return redirect("site_app:index")
+        else:
+            messages.success(
+                request, _("There Was An Error Logging In, Please Try Again...")
+            )
+            return redirect("site_app:login")
+
+    else:
+        return render(request, "site_app/login.html", {})
+
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, _("You Have Been Logged Out..."))
+    return redirect("site_app:login")
 
 
 def signup(request):
@@ -28,12 +51,11 @@ def signup(request):
 
         if form.is_valid():
             form.save()
-            messages.success(request, _("You have been Signed Up!"))
-            return redirect("/")
+            messages.success(request, _("You Have Been Signed Up!"))
+            return redirect("site_app:login")
 
     else:
         form = SignupForm()
-        messages.success(request, _("Something went wrong! Try one more time!"))
 
     return render(request, "site_app/signup.html", {"form": form})
 
@@ -58,10 +80,8 @@ def edit_profile(request):
         form = EditUserForm(request.POST or None, instance=current_user)
         if form.is_valid():
             form.save()
-            messages.success(request, _("Profile has been updated!"))
+            messages.success(request, _("Profile Has Been Updated!"))
             return redirect("site_app:login")
-        else:
-            messages.success(request, _("Something went wrong! Try one more time!"))
 
         return render(request, "site_app/edit_profile.html", {"form": form})
 
@@ -94,7 +114,7 @@ def check_debt(request):
                 if s.debtor == False:
                     s.debtor = True
                     s.save()
-                messages.success(request, _("There are New Debts!"))
+                messages.success(request, _("There Are New Debts!"))
             return redirect("site_app:ag_grid")
         elif payment.pay_date < today.date() and payment.payed == True:
             for s in payment.contract.student.all():
@@ -102,7 +122,7 @@ def check_debt(request):
                 s.save()
             return redirect("site_app:ag_grid")
         else:
-            messages.success(request, _("No new Debts!"))
+            messages.success(request, _("No New Debts!"))
             return redirect("site_app:ag_grid")
 
 
@@ -320,7 +340,6 @@ def orders(request, pk):
 
 
 def generate_pdf(request, pk):
-    # messages.success(request, _("Please wait for the PDF being generated..."))
     order = Order.objects.get(id=pk)
     template_path = "site_app/order_for_enrollment.html"
     context = {"order": order}
@@ -331,7 +350,7 @@ def generate_pdf(request, pk):
 
     pisa_status = pisa.CreatePDF(html, dest=response)
     if pisa_status.err:
-        return HttpResponse("Error generating PDF")
+        return HttpResponse("Error Generating PDF")
 
     return response
 

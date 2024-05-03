@@ -7,7 +7,7 @@
 {% if request.user.is_authenticated %}
 
 <div style='display: none;' id="notification" class="alert alert-warning alert-dismissible fade show" role="alert">
-    {% trans 'Please wait for the PDF file to be generated...' %}
+    {% trans 'Please Wait For The PDF File To Be Generated...' %}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 
@@ -24,7 +24,7 @@
     <table class="table_description">
         <tr>
             <td>
-                <b>{% trans 'Subject of order' %}:</b>
+                <b>{% trans 'Subject Of Order' %}:</b>
             </td>
             <td>
                 <span><b>{{ order.subject }}</b></span>
