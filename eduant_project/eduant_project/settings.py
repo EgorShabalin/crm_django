@@ -41,10 +41,10 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "127.0.0.1",
     "localhost",
-    "eduant-crm.onrender.com",
+    "students-crm.onrender.com",
 ]
 
-CSRF_TRUSTED_ORIGINS = ["https://eduant-crm.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["https://students-crm.onrender.com"]
 
 
 # Application definition
