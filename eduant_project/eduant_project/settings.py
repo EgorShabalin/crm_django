@@ -41,10 +41,10 @@ ALLOWED_HOSTS = [
     "0.0.0.0",
     "127.0.0.1",
     "localhost",
-    "students-crm.onrender.com",
+    "crm-django-vept.onrender.com",
 ]
 
-CSRF_TRUSTED_ORIGINS = ["https://students-crm.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["https://crm-django-vept.onrender.com"]
 
 
 # Application definition
