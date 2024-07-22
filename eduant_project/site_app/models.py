@@ -208,6 +208,15 @@ class Internship(models.Model):
         verbose_name=_("End Date"),
     )
 
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_("Created Time"),
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_("Updated Time"),
+    )
+
     def __str__(self):
         return self.name
 

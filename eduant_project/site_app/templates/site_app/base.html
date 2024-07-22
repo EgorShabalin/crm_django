@@ -29,7 +29,7 @@
 
             <button class='button' type='button' onclick="location.href='{% url "site_app:index" %}'">{% trans 'HOME' %}</button>
 
-            <a href="{% url "site_app:index" %}"><img class="header_image" src="{% static "site_app/logo_eduant_corp.svg" %}"></a>
+            <a href="{% url "site_app:index" %}"><img class="header_image" src="{% static "site_app/logo.png" %}"></a>
             
             <div style='min-width: 190px;'>
                 <form style='float: right;' action="{% url 'set_language' %}" method="post">
